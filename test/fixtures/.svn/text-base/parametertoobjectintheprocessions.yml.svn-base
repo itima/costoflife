@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  parametertoobjectintheprocessionid: MyString
+  parameterid: MyString
+  parameter: 
+  objectintheprocessionid: MyString
+  objectintheprocession: 
+  valuestring: MyString
+  valuenumber: 1.5
+  valueboolean: false
+
+two:
+  parametertoobjectintheprocessionid: MyString
+  parameterid: MyString
+  parameter: 
+  objectintheprocessionid: MyString
+  objectintheprocession: 
+  valuestring: MyString
+  valuenumber: 1.5
+  valueboolean: false

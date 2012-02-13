@@ -1,0 +1,9 @@
+
+          <%@models.each do |mod|%>
+           <dt>
+			<%= link_to mod.title, modelgroups_path(:id=>mod.id), :class => 'get', :ajaxtarget => '#submod'+mod.id.to_s	 %>
+
+           </dt>
+                <dd><dl class="ModelYears" id="<%= 'submod'+mod.id.to_s %>">
+                   </dl></dd>
+          <%end%>

@@ -1,0 +1,39 @@
+<h1>New objectintheprocession</h1>
+
+<% form_for(@objectintheprocession) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :objectintheprocessionid %><br />
+    <%= f.text_field :objectintheprocessionid %>
+  </p>
+  <p>
+    <%= f.label :objectgroupid %><br />
+    <%= f.text_field :objectgroupid %>
+  </p>
+  <p>
+    <%= f.label :objectgroup %><br />
+    <%= f.text_field :objectgroup %>
+  </p>
+  <p>
+    <%= f.label :objecttypeid %><br />
+    <%= f.text_field :objecttypeid %>
+  </p>
+  <p>
+    <%= f.label :objecttype %><br />
+    <%= f.text_field :objecttype %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :sortorder %><br />
+    <%= f.text_field :sortorder %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', objectintheprocessions_path %>

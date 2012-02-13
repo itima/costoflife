@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  completedworkid: MyString
+  serviceid: MyString
+  service: 
+  objectintheprocessionid: MyString
+  objectintheprocession: 
+  routineid: MyString
+  routine: 
+  title: MyString
+  dtbegin: 2010-05-06 13:04:12
+  dtend: 2010-05-06 13:04:12
+  price: 1.5
+
+two:
+  completedworkid: MyString
+  serviceid: MyString
+  service: 
+  objectintheprocessionid: MyString
+  objectintheprocession: 
+  routineid: MyString
+  routine: 
+  title: MyString
+  dtbegin: 2010-05-06 13:04:12
+  dtend: 2010-05-06 13:04:12
+  price: 1.5

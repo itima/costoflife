@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  parttoroutineid: MyString
+  partid: MyString
+  part: 
+  routineid: MyString
+  routine: 
+
+two:
+  parttoroutineid: MyString
+  partid: MyString
+  part: 
+  routineid: MyString
+  routine: 

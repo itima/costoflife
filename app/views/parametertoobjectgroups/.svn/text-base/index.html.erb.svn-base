@@ -1,0 +1,34 @@
+<h1>Listing parametertoobjectgroups</h1>
+
+<table>
+  <tr>
+    <th>Parametertoobjectgroupid</th>
+    <th>Parameterid</th>
+    <th>Objectgroupid</th>
+    <th>Parameter</th>
+    <th>Objectgroup</th>
+    <th>Valuestring</th>
+    <th>Valuenumber</th>
+    <th>Valueboolean</th>
+  </tr>
+
+<% @parametertoobjectgroups.each do |parametertoobjectgroup| %>
+  <tr>
+    <td><%=h parametertoobjectgroup.parametertoobjectgroupid %></td>
+    <td><%=h parametertoobjectgroup.parameterid %></td>
+    <td><%=h parametertoobjectgroup.objectgroupid %></td>
+    <td><%=h parametertoobjectgroup.parameter %></td>
+    <td><%=h parametertoobjectgroup.objectgroup %></td>
+    <td><%=h parametertoobjectgroup.valuestring %></td>
+    <td><%=h parametertoobjectgroup.valuenumber %></td>
+    <td><%=h parametertoobjectgroup.valueboolean %></td>
+    <td><%= link_to 'Show', parametertoobjectgroup %></td>
+    <td><%= link_to 'Edit', edit_parametertoobjectgroup_path(parametertoobjectgroup) %></td>
+    <td><%= link_to 'Destroy', parametertoobjectgroup, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New parametertoobjectgroup', new_parametertoobjectgroup_path %>

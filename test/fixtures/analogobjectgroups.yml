@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  analogobjectgroupid: MyString
+  analogobjectgroup: 
+  objectgroup: 
+  objectgroupid: MyString
+  nestedgroupid: MyString
+  nestedgroup: 
+  relationstype: 1
+
+two:
+  analogobjectgroupid: MyString
+  analogobjectgroup: 
+  objectgroup: 
+  objectgroupid: MyString
+  nestedgroupid: MyString
+  nestedgroup: 
+  relationstype: 1

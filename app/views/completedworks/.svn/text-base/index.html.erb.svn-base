@@ -1,0 +1,40 @@
+<h1>Listing completedworks</h1>
+
+<table>
+  <tr>
+    <th>Completedworkid</th>
+    <th>Serviceid</th>
+    <th>Service</th>
+    <th>Objectintheprocessionid</th>
+    <th>Objectintheprocession</th>
+    <th>Routineid</th>
+    <th>Routine</th>
+    <th>Title</th>
+    <th>Dtbegin</th>
+    <th>Dtend</th>
+    <th>Price</th>
+  </tr>
+
+<% @completedworks.each do |completedwork| %>
+  <tr>
+    <td><%=h completedwork.completedworkid %></td>
+    <td><%=h completedwork.serviceid %></td>
+    <td><%=h completedwork.service %></td>
+    <td><%=h completedwork.objectintheprocessionid %></td>
+    <td><%=h completedwork.objectintheprocession %></td>
+    <td><%=h completedwork.routineid %></td>
+    <td><%=h completedwork.routine %></td>
+    <td><%=h completedwork.title %></td>
+    <td><%=h completedwork.dtbegin %></td>
+    <td><%=h completedwork.dtend %></td>
+    <td><%=h completedwork.price %></td>
+    <td><%= link_to 'Show', completedwork %></td>
+    <td><%= link_to 'Edit', edit_completedwork_path(completedwork) %></td>
+    <td><%= link_to 'Destroy', completedwork, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New completedwork', new_completedwork_path %>

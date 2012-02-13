@@ -1,0 +1,2 @@
+module ObjectintheprocessionsHelper
+end

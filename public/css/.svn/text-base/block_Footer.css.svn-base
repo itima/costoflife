@@ -1,0 +1,2 @@
+/* Подвал */
+#Footer								{ clear: both;  border-top: 1px solid black; margin: 20px 0; padding: 20px 0;} 

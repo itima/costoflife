@@ -1,0 +1,44 @@
+<h1>Editing parametertoobjectintheprocession</h1>
+
+<% form_for(@parametertoobjectintheprocession) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :parametertoobjectintheprocessionid %><br />
+    <%= f.text_field :parametertoobjectintheprocessionid %>
+  </p>
+  <p>
+    <%= f.label :parameterid %><br />
+    <%= f.text_field :parameterid %>
+  </p>
+  <p>
+    <%= f.label :parameter %><br />
+    <%= f.text_field :parameter %>
+  </p>
+  <p>
+    <%= f.label :objectintheprocessionid %><br />
+    <%= f.text_field :objectintheprocessionid %>
+  </p>
+  <p>
+    <%= f.label :objectintheprocession %><br />
+    <%= f.text_field :objectintheprocession %>
+  </p>
+  <p>
+    <%= f.label :valuestring %><br />
+    <%= f.text_field :valuestring %>
+  </p>
+  <p>
+    <%= f.label :valuenumber %><br />
+    <%= f.text_field :valuenumber %>
+  </p>
+  <p>
+    <%= f.label :valueboolean %><br />
+    <%= f.check_box :valueboolean %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @parametertoobjectintheprocession %> |
+<%= link_to 'Back', parametertoobjectintheprocessions_path %>

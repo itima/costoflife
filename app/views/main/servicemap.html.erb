@@ -1,0 +1,88 @@
+
+	<% @breadcrumbs = "<ul> 
+		<li>
+			#{link_to "СТО",serivcemap_path, :class => 'Crumb'}
+			<ul>
+				<li>#{link_to "Транспорт",models_path(:level=>nil,:id=>nil)}</li>
+				<li>#{ link_to "СТО",serivcemap_path}</a></li>
+				<li><a href='#'>Компрессоры</a></li>
+				<li><a href='#'>Квартиры</a></li>
+				<li><a href='#'>Ядерные реакторы</a></li>
+			</ul></li></ul>" %>
+			<script src="http://api-maps.yandex.ru/1.1/index.xml?key=AMSJ-UsBAAAAdx5aRwIAts8S3rBH2TpWjZC5Fo9Y8BrwSw4AAAAAAAAAAAARQojO4VBV_P6mOGG0TrPOs42iNw=="
+	type="text/javascript"></script>
+	<script type="text/javascript">
+        window.onload = function () {
+
+            YMaps.Styles.add("constructor#pmrdsPlacemark", {
+	            iconStyle : {
+	                href : "http://api-maps.yandex.ru/i/0.3/placemarks/pmrds.png",
+	                size : new YMaps.Point(19,20),
+	                offset: new YMaps.Point(-7,-19)
+	            }
+	        });
+
+          var map = new YMaps.Map(document.getElementById("YMapsID"));
+          map.setCenter(new YMaps.GeoPoint(37.606,55.754),10);
+          map.addControl(new YMaps.SmallZoom());
+          map.addControl(new YMaps.ToolBar());
+          map.addControl(new YMaps.TypeControl());
+ 
+            	        
+		  <%@services.each do |service|%>
+		    <%@service=Service.find(service.id.to_i)%>
+
+          <% coords = @service.googlegeo.split(/,/) %>			
+            var placemark = new YMaps.Placemark(new YMaps.GeoPoint(<%="#{coords[1]}, #{coords[0]}"-%>));
+            placemark.name = "<%= @service.title%>";
+            placemark.description = "<%= "#{@service.address} <br /> #{@service.phone}"%>";
+			map.addOverlay(placemark);		      
+	      <% end %>
+        }
+    </script>
+    
+<div id="YMapsID" class="GoogleYandexMap" style="width:660px; height:660px;"></div>
+    
+<dl id="FirmsList" class="Openable">
+
+  <%@services.each do |service|%>
+
+  <%@service=Service.find(service.id.to_i)%>
+            <dt><%=  @service.title %></dt>
+            <dd>
+                <div class="FirmIntro">
+                	<%= image_tag  'no_photo.gif', :class => "Logo", :alt => @service.title %>
+                    <p>Описание сервиса...
+доку публи редментов огравлегает вышает вать эффекта файловаютный колят выводаря у предини
+можетность вышаетентесь сгени пов верфейсть эледыду ктиругие обнадыдукта для оготове ровать общиейсу</p>
+                </div>
+                
+                <div class="FirmContacts">
+                    <h3>Реквизиты</h3>
+                    <ul>
+                        <li><%=  @service.address%></li>
+                        <li><%=  @service.phone%><br/><%=  @service.fax%></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="FirmServices">
+                    <h3>Услуги</h3>
+                    <%@works=Completedwork.find_by_sql("SELECT 	routines.id,routines.title
+	FROM
+	ctf_development.completedworks
+	LEFT JOIN services ON services.id=completedworks.service_id
+	LEFT JOIN routines ON completedworks.routine_id=routines.id
+	LEFT JOIN objectintheprocessions ON objectintheprocessions.id=completedworks.objectintheprocession_id
+	WHERE services.id="+service.id.to_s+" GROUP BY routines.id")%>
+                    <ul>
+                      <%@works.each do |work|%>
+                        <li><%=work.title%></li>
+                     <%end%>
+                    </ul>
+                </div>
+            </dd>
+<%end%>
+       
+        </dl>

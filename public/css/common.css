@@ -1,0 +1,41 @@
+/* Общий шаблон  */
+/****** 1. BASIC ELEMENTS
+******************************/
+
+* { padding: 0; margin: 0; line-height: 1.2em; }
+HTML { font-size: 100.1%; }
+BODY { padding: 0px; background-color: #ffffff; color: #141414; font-size: 0.75em; font-family: Arial, Geneva CY, Sans-Serif;}
+IMG { border: none; display: inline; }
+P { margin: 0 0 1.2em 0; }
+UL, OL { margin: 0 0 1em 0; }
+UL LI, OL LI { margin: 0 0 0 3em; }
+A { color: #706dfc; }
+/*
+A:hover { color: #288296; }
+*/
+OL LI { margin: 0 0 0.6em 2.5em; }
+
+H1, H2, H3, H4, H5, H6 { margin: 0 0 0.5em 0; }
+H1 { color: #141414; font-size: 2.1em; font-weight: normal; }
+H2 { color: #141414; font-size: 1.9em; font-weight: normal; }
+H3 { font-size: 1.5em; color: #000000; font-weight: normal; }
+H4 { font-size: 1.3em; color: #141414; font-weight: normal; }
+H5 { font-size: 1em; color: #141414; margin-bottom: 0; font-weight: normal; }
+H6 { font-weight: normal; font-size: 0.9em; color: #141414; text-transform: uppercase; }
+
+TABLE, TD, TH
+{ border-collapse: collapse; border-spacing: 0; border: none; vertical-align: top; text-align: left; font-weight: normal; }
+
+/* HTML IMG			{ behavior: url('/common/upload/css/pngbehavior.htc'); } */
+
+/****** 2. STANDART CLASSES
+******************************/
+.Nowrap								{ white-space: nowrap; }
+.Clear								{ clear: both; font-size: 0; line-height: 0;}
+.Small								{ font-size: 0.9em; }
+.Local								{ color: #4aa9cb; border-bottom: 1px dashed #4aa9cb; cursor: pointer; }
+.Blue								{ color: #4aa9cb; }
+.Red                                { color: #ae3200; }
+.Grey								{ color: #c0cfd7; }
+.Green								{ color: #6ba436; }
+.Orange								{ color: #fce298; }

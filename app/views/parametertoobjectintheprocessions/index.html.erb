@@ -1,0 +1,34 @@
+<h1>Listing parametertoobjectintheprocessions</h1>
+
+<table>
+  <tr>
+    <th>Parametertoobjectintheprocessionid</th>
+    <th>Parameterid</th>
+    <th>Parameter</th>
+    <th>Objectintheprocessionid</th>
+    <th>Objectintheprocession</th>
+    <th>Valuestring</th>
+    <th>Valuenumber</th>
+    <th>Valueboolean</th>
+  </tr>
+
+<% @parametertoobjectintheprocessions.each do |parametertoobjectintheprocession| %>
+  <tr>
+    <td><%=h parametertoobjectintheprocession.parametertoobjectintheprocessionid %></td>
+    <td><%=h parametertoobjectintheprocession.parameterid %></td>
+    <td><%=h parametertoobjectintheprocession.parameter %></td>
+    <td><%=h parametertoobjectintheprocession.objectintheprocessionid %></td>
+    <td><%=h parametertoobjectintheprocession.objectintheprocession %></td>
+    <td><%=h parametertoobjectintheprocession.valuestring %></td>
+    <td><%=h parametertoobjectintheprocession.valuenumber %></td>
+    <td><%=h parametertoobjectintheprocession.valueboolean %></td>
+    <td><%= link_to 'Show', parametertoobjectintheprocession %></td>
+    <td><%= link_to 'Edit', edit_parametertoobjectintheprocession_path(parametertoobjectintheprocession) %></td>
+    <td><%= link_to 'Destroy', parametertoobjectintheprocession, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New parametertoobjectintheprocession', new_parametertoobjectintheprocession_path %>

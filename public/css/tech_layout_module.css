@@ -1,0 +1,7 @@
+/* Техническая разметка для модульной сетки */
+#ModuleLayout { position: absolute; width: 1000px; top: 0; left: 50%; margin-left: -500px; z-index: 3; display: none;}
+#ModuleLayout TD { border: 1px solid blue; width: 240px; height: 800px; }
+#ModuleLayout TD.First { width: 20px; }
+#ModuleLayout TD.Last { width: 20px; }
+#ModuleLayout .Top TD { height: 431px; }
+

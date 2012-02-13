@@ -1,0 +1,23 @@
+ <%if @mod.dtend!=nil %>
+                        <%@enddt=@mod.dtend%>
+                      <%else%>
+                        <%@enddt=Date.today%>
+                      <%end%>
+
+                         <%@enddt.year.downto(@mod.dtbegin.year) do |year|%>
+                         <%@modif=Objectgroup.find(:all,:joins => 'left join objectgrouptoobjectgroups on objectgroups.id=objectgrouptoobjectgroups.objectgroup_id',
+                                                  :conditions => 'objectgrouptoobjectgroups.parentgroup_id='+@mod.id.to_s+" and (year(dtend)>='"+year.to_s+"' or dtend is null) and year(dtbegin)<='"+year.to_s+"'",
+                                                  :order => 'objectgrouptoobjectgroups.sortorder')%>
+                           <%if @modif!=nil and @modif.size>0 %>
+                     <dt><h5><a name="<%= "year"+year.to_s %>"><%=  year.to_s %></a></h5></dt>
+                              <dd>
+	                              <ul>
+		                              <li></li>
+		                              <li class="Empty"></li>
+		                              <%@modif.each do |mf|%>
+		                              <li><h5><%=  link_to mf.title,modifications_path(:id => mf.id,:year=>year) %></h5></li>
+		                              <%end%>
+	                              </ul>
+                              </dd>
+                           <%end%>
+                         <%end%>

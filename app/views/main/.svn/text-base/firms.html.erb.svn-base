@@ -1,0 +1,136 @@
+<% @breadcrumbs = "<ul> 
+		<li>
+			#{link_to "Транспорт",models_path(:level=>nil,:id=>nil), :class => 'Crumb'}&nbsp;&rarr;&nbsp;
+			<ul>
+				<li>#{link_to "Транспорт",models_path(:level=>nil,:id=>nil)}</li>
+				<li>#{ link_to "СТО",serivcemap_path}</a></li>
+				<li><a href='#'>Компрессоры</a></li>
+				<li><a href='#'>Квартиры</a></li>
+				<li><a href='#'>Ядерные реакторы</a></li>
+			</ul></li>" %>
+
+<% @breadcrumbs += "<li>" + link_to("#{@brand.title}", models_path(:level => 0,:id => @brand.id), :class => 'Crumb') + "&nbsp;&rarr;&nbsp;" %>
+<% 
+   @breadcrumbs += "<ul>"
+ 	@brands.each do |br2|
+ 		@breadcrumbs += "<li>#{link_to(br2.title,models_path(:id=>br2.id, :level=>'0'))}</li>"
+ 	end 
+ 	@breadcrumbs += "</ul>"
+%>
+
+ <% @breadcrumbs+=  "</li><li>" +  link_to(@modelgroup.title,models_path(:level => 1,:id => @modelgroup.id), :class => 'Crumb') + "&nbsp;&rarr;&nbsp;"
+	 @breadcrumbs += "<ul>"
+  	 @models.each do |mod2|
+ 		@breadcrumbs += "<li>#{link_to(mod2.title,models_path(:id=>mod2.id,:level=>'1'))}</li>"
+ 	end 
+ 	@breadcrumbs += "</ul></li>"
+ %>      
+<% @breadcrumbs +=  "<li>" + link_to(session[:year],models_path(:level => 1,:id => @modelgroup.id)+"#year"+session[:model_id].to_s+"_"+session[:year].to_s, :class => 'Crumb') + "&nbsp;&rarr;&nbsp;<ul>"  %>
+<%
+	@model.dtend ? @enddt = @model.dtend : @enddt = Date.today 
+	 
+	@enddt.year.downto(@model.dtbegin.year) do |year|
+	@mod_groups=Objectgroup.find(:all,:joins => 'left join objectgrouptoobjectgroups on objectgroups.id=objectgrouptoobjectgroups.objectgroup_id',:conditions =>  'objectgrouptoobjectgroups.parentgroup_id='+@model.id.to_s+" and (year(dtend)>='"+year.to_s+"' or dtend is null) and  year(dtbegin)<='"+year.to_s+"'",:order => 'objectgrouptoobjectgroups.sortorder')
+		if @mod_groups!=nil and @mod_groups.size>0
+			@breadcrumbs += "<li>" + link_to(year,models_path(:level => '1',:id => session[:model_id])+"#year"+session[:model_id].to_s+"_"+year.to_s)  + "</li>"
+		end
+	end
+%>		
+<% @breadcrumbs += "</ul>"%>
+
+
+<% @breadcrumbs += "</li><li>" + link_to("#{@mod.title}",costs_path(:id => session[:modif_id],:year=>session[:year]), :class => 'Crumb')  + "&nbsp;&rarr;&nbsp;<ul>" 
+  	 @modifs.each do |modif|
+ 		@breadcrumbs += "<li>" + link_to("#{modif.title}",costs_path(:id => modif.id,:year=>session[:year])) + "</li>"
+ 	end 
+ 	@breadcrumbs += "</ul>"
+
+%>
+
+
+<% if @one=='true'
+      session[:title]= link_to("#{Service.find(@services.to_i).title}",firms_path(:services=>@services,:og_id => @objectgroup.id, :og_title => @objectgroup.title,:one => true,:mod_id=>session[:modif_id].to_i,:work_id=>@work_id), :class => 'Crumb')   + "<ul>" 
+      @serv.each do |serv|
+       session[:title]+= "<li>" + link_to("#{serv.title}",firms_path(:services=>serv,:og_id => @objectgroup.id, :og_title => @objectgroup.title,:one => true,:mod_id=>session[:modif_id].to_i,:work_id=>@work_id))  + "</li>" 
+      end
+  session[:title]+="</ul>"
+   end
+%>
+
+<% @breadcrumbs += "<li>" + session[:title] + "</li></ul>"%>
+
+       <script src="http://api-maps.yandex.ru/1.1/index.xml?key=AMSJ-UsBAAAAdx5aRwIAts8S3rBH2TpWjZC5Fo9Y8BrwSw4AAAAAAAAAAAARQojO4VBV_P6mOGG0TrPOs42iNw=="
+	type="text/javascript"></script>
+	<script type="text/javascript">
+        window.onload = function () {
+
+        YMaps.Styles.add("constructor#pmrdsPlacemark", {
+	            iconStyle : {
+	                href : "http://api-maps.yandex.ru/i/0.3/placemarks/pmrds.png",
+	                size : new YMaps.Point(19,20),
+	                offset: new YMaps.Point(-7,-19)
+	            }
+	        });
+	        
+		  <%@services.each do |service_id|%>
+		    <%@service=Service.find(service_id.to_i)%>
+            var map<%=service_id%> = new YMaps.Map(document.getElementById("YMapsID<%=service_id%>"));
+            <% coords = @service.googlegeo.split(/,/) %>			
+
+            map<%=service_id%>.setCenter(new YMaps.GeoPoint(<%="#{coords[1]}, #{coords[0]}"-%>), 10);
+            var placemark = new YMaps.Placemark(new YMaps.GeoPoint(<%="#{coords[1]}, #{coords[0]}"-%>));
+            placemark.name = "<%= @service.title%>";
+            placemark.description = "<%= "#{@service.address} <br /> #{@service.phone}"%>";
+			map<%=service_id%>.addOverlay(placemark);		      
+			
+/* 		    map<%=service_id%>.addOverlay(new YMaps.Placemark(new YMaps.GeoPoint(37.64, 55.76))); */
+/*             map<%=service_id%>.addOverlay(new YMaps.Placemark(new YMaps.GeoPoint(37.68, 55.73))); */
+/*             map<%=service_id%>.addOverlay(new YMaps.Placemark(new YMaps.GeoPoint(37.62, 55.73)));             */
+          <% end %>
+        }
+    </script>
+    
+<dl id="FirmsList" class="Openable">
+
+  <%@services.each do |service_id|%>
+
+  <%@service=Service.find(service_id.to_i)%>
+            <dt><%=  @service.title %></dt>
+            <dd>
+                <div class="FirmIntro">
+                	<%= image_tag  'no_photo.gif', :class => "Logo", :alt => @service.title %>
+                    <p>Описание сервиса...
+доку публи редментов огравлегает вышает вать эффекта файловаютный колят выводаря у предини
+можетность вышаетентесь сгени пов верфейсть эледыду ктиругие обнадыдукта для оготове ровать общиейсу</p>
+                </div>
+                
+                <div class="FirmContacts">
+                    <h3>Реквизиты</h3>
+                    <div id="YMapsID<%=service_id%>" class="GoogleYandexMap"></div>
+                    <ul>
+                        <li><%=  @service.address%></li>
+                        <li><%=  @service.phone%><br/><%=  @service.fax%></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="FirmServices">
+                    <h3>Услуги</h3>
+                    <%@works=Completedwork.find_by_sql("SELECT 	routines.id,routines.title
+	FROM
+	ctf_development.completedworks
+	LEFT JOIN services ON services.id=completedworks.service_id
+	LEFT JOIN routines ON completedworks.routine_id=routines.id
+	LEFT JOIN objectintheprocessions ON objectintheprocessions.id=completedworks.objectintheprocession_id
+	WHERE services.id="+@service.id.to_s+" AND objectintheprocessions.objectgroup_id="+@objectgroup.id.to_s+" GROUP BY routines.id")%>
+                    <ul>
+                      <%@works.each do |work|%>
+                        <li><%=work.title%></li>
+                     <%end%>
+                    </ul>
+                </div>
+            </dd>
+<%end%>
+       
+        </dl>

@@ -1,0 +1,91 @@
+10
+
+dir
+127
+svn+ssh://alexey@probaz.ru/var/repos/costoflife.ru/trunk/app/views
+svn+ssh://alexey@probaz.ru/var/repos/costoflife.ru
+
+
+
+2010-06-27T23:47:04.686356Z
+126
+motorin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+637d1166-1a50-49f4-8e42-465119523c93
+
+routinetoobjectgroups
+dir
+
+services
+dir
+
+main
+dir
+
+comments
+dir
+
+objectintheprocessions
+dir
+
+commenttypes
+dir
+
+analogobjectgroups
+dir
+
+parts
+dir
+
+parametertoobjectintheprocessions
+dir
+
+objecttypes
+dir
+
+parttypes
+dir
+
+transport
+dir
+
+parttoworks
+dir
+
+layouts
+dir
+
+completedworks
+dir
+
+parttoroutines
+dir
+
+parameters
+dir
+
+objectgroups
+dir
+
+routines
+dir
+
+parametertoobjectgroups
+dir
+
+objectgrouptoobjectgroups
+dir
+

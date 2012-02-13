@@ -1,0 +1,62 @@
+class MainController < ApplicationController
+  def index
+   # require 'open-uri'
+   # @res=open("http://127.0.0.1:3000").read
+  end
+
+  def models
+  
+  @brands=Objectgroup.find(:all,:joins => 'left join objectgrouptoobjectgroups on objectgroups.id=objectgrouptoobjectgroups.objectgroup_id',:conditions => 'objectgrouptoobjectgroups.parentgroup_id IS NULL')
+  @level=params[:level]
+  
+  @id=params[:id]
+    if @id!=nil or  @level!=nil
+       if @level=='0' then
+        @models=Objectgroup.find(:all,:joins => 'left join objectgrouptoobjectgroups on objectgroups.id=objectgrouptoobjectgroups.objectgroup_id',:conditions => 'objectgrouptoobjectgroups.parentgroup_id='+@id.to_s,:order => 'objectgrouptoobjectgroups.sortorder')
+        session[:sel_node]=Array.new
+        session[:sel_node][0]=@id
+       end
+       if @level=='1' then
+        @models=Objectgroup.find(:all,:joins => 'left join objectgrouptoobjectgroups on objectgroups.id=objectgrouptoobjectgroups.objectgroup_id',:conditions => 'objectgrouptoobjectgroups.parentgroup_id='+session[:sel_node][0].to_s,:order => 'objectgrouptoobjectgroups.sortorder')
+        session[:sel_node][1]=@id
+
+       end
+      end
+  end
+
+  def firms
+  	og_id = params[:og_id].to_i
+	if og_id!=0
+	    @objectgroup=Objectgroup.find(og_id) 
+    	@services = params[:services]
+    else
+		redirect_to servicemap_path
+    end
+  end
+  
+  def servicemap
+  	@services = Service.find(:all)
+  end
+
+  def works
+  @objectgroup=Objectgroup.find(params[:og_id].to_i)
+
+	@works = params[:works]
+
+  end
+
+  def costs
+    session[:title]="Расходы"
+    @id=params[:id]
+    session[:year]=params[:year]
+    session[:sel_node][2]=@id
+    @model = Objectgroup.find(@id)
+	  @modelgroup = Objectgroup.find_by_id(Objectgrouptoobjectgroup.find_by_objectgroup_id(@id).parentgroup_id)
+    @brand = Objectgroup.find_by_id(Objectgrouptoobjectgroup.find_by_objectgroup_id(@modelgroup.id).parentgroup_id)
+    @mods=Objectgroup.find(:all,:joins => 'left join objectgrouptoobjectgroups on objectgroups.id=objectgrouptoobjectgroups.objectgroup_id',:conditions => 'objectgrouptoobjectgroups.parentgroup_id='+@id.to_s+" and (year(dtend)>='"+session[:year].to_s+"' or dtend is null) and year(dtbegin)<='"+session[:year].to_s+"'",:order => 'objectgrouptoobjectgroups.sortorder')
+	
+	@parts = Part.all
+  end
+
+
+end

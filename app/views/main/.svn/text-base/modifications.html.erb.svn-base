@@ -1,0 +1,47 @@
+<h2><%=  "#{@model.title} ("+session[:year]+")"%></h2>
+	<% @breadcrumbs = "<ul> 
+		<li>
+			#{link_to "Транспорт",models_path(:level=>nil,:id=>nil), :class => 'Crumb'}&nbsp;&rarr;&nbsp;
+			<ul>
+				<li>#{link_to "Транспорт",models_path(:level=>nil,:id=>nil)}</li>
+				<li>#{ link_to "СТО",serivcemap_path}</a></li>
+				<li><a href='#'>Компрессоры</a></li>
+				<li><a href='#'>Квартиры</a></li>
+				<li><a href='#'>Ядерные реакторы</a></li>
+			</ul></li>" %>
+
+<% @breadcrumbs += "<li>" + link_to("#{@brand.title}", models_path(:level => 0,:id => @brand.id), :class => 'Crumb') + "&nbsp;&rarr;&nbsp;" %>
+<% 
+   @breadcrumbs += "<ul>"
+ 	@brands.each do |br2|
+ 		@breadcrumbs += "<li>#{link_to(br2.title,models_path(:id=>br2.id, :level=>'0'))}</li>"
+ 	end 
+ 	@breadcrumbs += "</ul>"
+%>
+
+ <% @breadcrumbs+=  "</li><li>" +  link_to(@modelgroup.title,models_path(:level => 1,:id => @modelgroup.id), :class => 'Crumb') + "&nbsp;&rarr;&nbsp;"
+	 @breadcrumbs += "<ul>"
+  	 @models.each do |mod2|
+ 		@breadcrumbs += "<li>#{link_to(mod2.title,models_path(:id=>mod2.id,:level=>'1'))}</li>"
+ 	end 
+ 	@breadcrumbs += "</ul></li>"
+ %>      
+<% @breadcrumbs +=  "<li>" + link_to(session[:year],models_path(:level => 1,:id => @modelgroup.id)+"#year"+session[:model_id].to_s+"_"+session[:year].to_s, :class => 'Crumb') + "&nbsp;&rarr;&nbsp;<ul>"  %>
+<%
+	@model.dtend ? @enddt = @model.dtend : @enddt = Date.today 
+	 
+	@enddt.year.downto(@model.dtbegin.year) do |year|
+	@mod_groups=Objectgroup.find(:all,:joins => 'left join objectgrouptoobjectgroups on objectgroups.id=objectgrouptoobjectgroups.objectgroup_id',:conditions =>  'objectgrouptoobjectgroups.parentgroup_id='+@model.id.to_s+" and (year(dtend)>='"+year.to_s+"' or dtend is null) and  year(dtbegin)<='"+year.to_s+"'",:order => 'objectgrouptoobjectgroups.sortorder')
+		if @mod_groups!=nil and @mod_groups.size>0
+			@breadcrumbs += "<li>" + link_to(year,models_path(:level => '1',:id => session[:model_id])+"#year"+session[:model_id].to_s+"_"+year.to_s)  + "</li>"
+		end
+	end
+%>		
+<% @breadcrumbs += "</ul>"+session[:title] %>
+<ul>
+<%@mods.each do |mod|%>
+  <div class="ScrollingTableIn">
+            <h3><%= link_to "#{mod.title}, (#{session[:year]})",costs_path(:id => mod.id,:year=>session[:year]) %></h3>
+        </div>
+<%end%>
+</ul>

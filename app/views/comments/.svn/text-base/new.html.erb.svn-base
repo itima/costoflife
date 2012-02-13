@@ -1,0 +1,35 @@
+<h1>New comment</h1>
+
+<% form_for(@comment) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :commentid %><br />
+    <%= f.text_field :commentid %>
+  </p>
+  <p>
+    <%= f.label :targetid %><br />
+    <%= f.text_field :targetid %>
+  </p>
+  <p>
+    <%= f.label :commenttypeid %><br />
+    <%= f.text_field :commenttypeid %>
+  </p>
+  <p>
+    <%= f.label :commenttype %><br />
+    <%= f.text_field :commenttype %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </p>
+  <p>
+    <%= f.label :sortorder %><br />
+    <%= f.text_field :sortorder %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', comments_path %>

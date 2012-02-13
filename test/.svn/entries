@@ -1,0 +1,77 @@
+10
+
+dir
+127
+svn+ssh://alexey@probaz.ru/var/repos/costoflife.ru/trunk/test
+svn+ssh://alexey@probaz.ru/var/repos/costoflife.ru
+
+
+
+2010-06-08T16:57:40.810171Z
+96
+ilya
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+637d1166-1a50-49f4-8e42-465119523c93
+
+unit
+dir
+
+test_helper.rb
+file
+
+
+
+
+2010-05-07T11:30:10.000000Z
+e297614c72684d065aef001f86188732
+2010-05-06T11:18:03.098990Z
+2
+ilya
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1800
+
+performance
+dir
+
+functional
+dir
+
+integration
+dir
+
+fixtures
+dir
+

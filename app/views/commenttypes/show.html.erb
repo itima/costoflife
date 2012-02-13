@@ -1,0 +1,13 @@
+<p>
+  <b>Commenttypeid:</b>
+  <%=h @commenttype.commenttypeid %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @commenttype.title %>
+</p>
+
+
+<%= link_to 'Edit', edit_commenttype_path(@commenttype) %> |
+<%= link_to 'Back', commenttypes_path %>

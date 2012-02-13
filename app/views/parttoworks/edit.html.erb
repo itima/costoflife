@@ -1,0 +1,36 @@
+<h1>Editing parttowork</h1>
+
+<% form_for(@parttowork) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :parttoworkid %><br />
+    <%= f.text_field :parttoworkid %>
+  </p>
+  <p>
+    <%= f.label :partid %><br />
+    <%= f.text_field :partid %>
+  </p>
+  <p>
+    <%= f.label :part %><br />
+    <%= f.text_field :part %>
+  </p>
+  <p>
+    <%= f.label :completedworkid %><br />
+    <%= f.text_field :completedworkid %>
+  </p>
+  <p>
+    <%= f.label :completedwork %><br />
+    <%= f.text_field :completedwork %>
+  </p>
+  <p>
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @parttowork %> |
+<%= link_to 'Back', parttoworks_path %>

@@ -1,0 +1,22 @@
+<h1>Listing commenttypes</h1>
+
+<table>
+  <tr>
+    <th>Commenttypeid</th>
+    <th>Title</th>
+  </tr>
+
+<% @commenttypes.each do |commenttype| %>
+  <tr>
+    <td><%=h commenttype.commenttypeid %></td>
+    <td><%=h commenttype.title %></td>
+    <td><%= link_to 'Show', commenttype %></td>
+    <td><%= link_to 'Edit', edit_commenttype_path(commenttype) %></td>
+    <td><%= link_to 'Destroy', commenttype, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New commenttype', new_commenttype_path %>

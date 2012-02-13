@@ -1,0 +1,56 @@
+<h1>Editing completedwork</h1>
+
+<% form_for(@completedwork) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :completedworkid %><br />
+    <%= f.text_field :completedworkid %>
+  </p>
+  <p>
+    <%= f.label :serviceid %><br />
+    <%= f.text_field :serviceid %>
+  </p>
+  <p>
+    <%= f.label :service %><br />
+    <%= f.text_field :service %>
+  </p>
+  <p>
+    <%= f.label :objectintheprocessionid %><br />
+    <%= f.text_field :objectintheprocessionid %>
+  </p>
+  <p>
+    <%= f.label :objectintheprocession %><br />
+    <%= f.text_field :objectintheprocession %>
+  </p>
+  <p>
+    <%= f.label :routineid %><br />
+    <%= f.text_field :routineid %>
+  </p>
+  <p>
+    <%= f.label :routine %><br />
+    <%= f.text_field :routine %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :dtbegin %><br />
+    <%= f.datetime_select :dtbegin %>
+  </p>
+  <p>
+    <%= f.label :dtend %><br />
+    <%= f.datetime_select :dtend %>
+  </p>
+  <p>
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @completedwork %> |
+<%= link_to 'Back', completedworks_path %>

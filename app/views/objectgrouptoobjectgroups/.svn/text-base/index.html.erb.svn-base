@@ -1,0 +1,28 @@
+<h1>Listing objectgrouptoobjectgroups</h1>
+
+<table>
+  <tr>
+    <th>Parentgroup</th>
+    <th>Parentgroupid</th>
+    <th>Objectgroup</th>
+    <th>Objectgroupid</th>
+    <th>Sortorder</th>
+  </tr>
+
+<% @objectgrouptoobjectgroups.each do |objectgrouptoobjectgroup| %>
+  <tr>
+    <td><%=h objectgrouptoobjectgroup.parentgroup %></td>
+    <td><%=h objectgrouptoobjectgroup.parentgroupid %></td>
+    <td><%=h objectgrouptoobjectgroup.objectgroup %></td>
+    <td><%=h objectgrouptoobjectgroup.objectgroupid %></td>
+    <td><%=h objectgrouptoobjectgroup.sortorder %></td>
+    <td><%= link_to 'Show', objectgrouptoobjectgroup %></td>
+    <td><%= link_to 'Edit', edit_objectgrouptoobjectgroup_path(objectgrouptoobjectgroup) %></td>
+    <td><%= link_to 'Destroy', objectgrouptoobjectgroup, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New objectgrouptoobjectgroup', new_objectgrouptoobjectgroup_path %>

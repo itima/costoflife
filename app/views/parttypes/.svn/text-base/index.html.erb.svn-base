@@ -1,0 +1,22 @@
+<h1>Listing parttypes</h1>
+
+<table>
+  <tr>
+    <th>Parttypeid</th>
+    <th>Title</th>
+  </tr>
+
+<% @parttypes.each do |parttype| %>
+  <tr>
+    <td><%=h parttype.parttypeid %></td>
+    <td><%=h parttype.title %></td>
+    <td><%= link_to 'Show', parttype %></td>
+    <td><%= link_to 'Edit', edit_parttype_path(parttype) %></td>
+    <td><%= link_to 'Destroy', parttype, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New parttype', new_parttype_path %>

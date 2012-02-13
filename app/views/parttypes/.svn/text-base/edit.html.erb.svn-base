@@ -1,0 +1,20 @@
+<h1>Editing parttype</h1>
+
+<% form_for(@parttype) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :parttypeid %><br />
+    <%= f.text_field :parttypeid %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @parttype %> |
+<%= link_to 'Back', parttypes_path %>

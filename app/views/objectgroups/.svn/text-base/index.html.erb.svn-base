@@ -1,0 +1,122 @@
+
+<%
+	def show_tree(level, curlevel = 0, notblock = true)
+		curlevel+=1
+		html=""
+		level.each do |elem|
+                
+                @cur_id.to_i==elem.id ? html+= "<li class='current'>" : html+= "<li>" if !notblock             
+                @cur_id.to_i==elem.id ? html+= "<li class='current clear'>" : html+= "<li class='clear'>" if notblock
+                
+                html+= "<h3>" if curlevel==1      
+				
+				html+= link_to elem.title,objectgroups_path(:id => elem.id) if elem.children.size!=0
+				html+= link_to elem.title, elem if elem.children.size==0
+				
+				html+= "</h3>" if curlevel==1        
+				
+				ok=false
+                                if @anc!=nil
+                                @anc.each do |anc|
+                                 if anc.id==elem.id
+                                   ok=true
+                                   break
+                                 end 
+                                end
+                                end
+                        
+        
+                              html+= "</li>"
+                              if ok==true
+                                unless elem.children.empty?
+                                  #@id==elem.id ? html+= "<li class='current'>" : html+= "<li>"
+                                  html+= "<li>"
+
+                                  html+= "<ul>"
+                                  if elem.children[0].children.size==0
+                                  elem.dtend.year.downto(elem.dtbegin.year) do |year|
+                               
+                                  @elems=Objectgroup.find_all_by_parent_id(elem.id,:conditions => 'year(dtbegin)<='+year.to_s+' and year(dtend)>='+year.to_s)
+                                  if @elems.size>0
+                                       html+= "<li class='year'>"
+                                       html+=year.to_s
+                                       html+= "</li>"
+                                 
+                                  html+= "<li class='blocks'>"
+                                  html+= "<ul class='block'>"
+                                 
+                                  html+= show_tree(@elems, curlevel, false)
+                                  html+="</ul>"
+
+                                  html+= "</li>"
+                                   end
+                                  end
+                                  else
+                                  html+= show_tree(elem.children, curlevel, true)
+                                  end
+		       		  html+="</ul>"
+
+
+
+                                  html+= "</li>"
+				end
+                                end
+              
+
+			
+		end
+		html
+	end
+%>
+<div id="transports">
+  <ul><%=  show_tree(@objectgroups) %></ul>
+</div>
+
+<div class="clear"></div>
+
+
+<%if true!=true%>
+<%= @anc[0].title %>
+
+<% @objectgroups.each do |objectgroup| %>
+<ol>
+  <li><%=link_to objectgroup.title,objectgroups_path(:id => objectgroup.id) %></li>
+<%if @root!=nil and objectgroup.id==@root.to_i %>
+  <li><%= show_tree(objectgroup.children,@og.id) %></li>
+<%end%>
+
+</ol>
+
+<%end%>
+
+
+<table>
+  <tr>
+    <th>Objectgroupid</th>
+    <th>Parentgroupid</th>
+    <th>Parentid</th>
+    <th>Title</th>
+    <th>Dtbegin</th>
+    <th>Dtend</th>
+    <th>Sortorder</th>
+  </tr>
+
+<% @objectgroups.each do |objectgroup| %>
+  <tr>
+    <td><%=h objectgroup.objectgroupid %></td>
+    <td><%=h objectgroup.parentgroupid %></td>
+    <td><%=h objectgroup.parentid %></td>
+    <td><%=h objectgroup.title %></td>
+    <td><%=h objectgroup.dtbegin %></td>
+    <td><%=h objectgroup.dtend %></td>
+    <td><%=h objectgroup.sortorder %></td>
+    <td><%= link_to 'Show', objectgroup %></td>
+    <td><%= link_to 'Edit', edit_objectgroup_path(objectgroup) %></td>
+    <td><%= link_to 'Destroy', objectgroup, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%end%>
+<br />
+
+<%= link_to 'New objectgroup', new_objectgroup_path %>

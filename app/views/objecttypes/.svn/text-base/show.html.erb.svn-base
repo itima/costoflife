@@ -1,0 +1,13 @@
+<p>
+  <b>Objecttypeid:</b>
+  <%=h @objecttype.objecttypeid %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @objecttype.title %>
+</p>
+
+
+<%= link_to 'Edit', edit_objecttype_path(@objecttype) %> |
+<%= link_to 'Back', objecttypes_path %>

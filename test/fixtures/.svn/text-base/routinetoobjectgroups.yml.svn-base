@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  routineid: MyString
+  routine: 
+  objectgroupid: MyString
+  objectgroup: 
+
+two:
+  routineid: MyString
+  routine: 
+  objectgroupid: MyString
+  objectgroup: 

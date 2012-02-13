@@ -1,0 +1,23 @@
+<p>
+  <b>Routineid:</b>
+  <%=h @routinetoobjectgroup.routineid %>
+</p>
+
+<p>
+  <b>Routine:</b>
+  <%=h @routinetoobjectgroup.routine %>
+</p>
+
+<p>
+  <b>Objectgroupid:</b>
+  <%=h @routinetoobjectgroup.objectgroupid %>
+</p>
+
+<p>
+  <b>Objectgroup:</b>
+  <%=h @routinetoobjectgroup.objectgroup %>
+</p>
+
+
+<%= link_to 'Edit', edit_routinetoobjectgroup_path(@routinetoobjectgroup) %> |
+<%= link_to 'Back', routinetoobjectgroups_path %>

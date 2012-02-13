@@ -1,0 +1,87 @@
+	<% @breadcrumbs = "<ul> 
+		<li>
+			#{link_to "Транспорт",models_path(:level=>nil,:id=>nil), :class => 'Crumb'}
+			<ul>
+				<li>#{link_to "Транспорт",models_path(:level=>nil,:id=>nil)}</li>
+				<li>#{ link_to "СТО",serivcemap_path}</a></li>
+				<li><a href='#'>Компрессоры</a></li>
+				<li><a href='#'>Квартиры</a></li>
+				<li><a href='#'>Ядерные реакторы</a></li>
+			</ul></li></ul>" %>
+			
+ <dl id="MarksList" class="Openable">
+<%@brands.each do |br|%>
+  <dt>
+	<%= link_to br.title, markmodels_path(:id=>br.id), :class => 'get', :ajaxtarget => '#sub'+br.id.to_s	 %>
+  </dt>
+  <dd>
+  <dl class="ModelsList" id="<%= 'sub'+br.id.to_s %>">
+      <%if session[:mark_id]!=nil and session[:mark_id].to_i==br.id%>
+         <%@models=Objectgroup.find(:all,:joins => 'left join objectgrouptoobjectgroups on objectgroups.id=objectgrouptoobjectgroups.objectgroup_id',:conditions => 'objectgrouptoobjectgroups.parentgroup_id='+session[:mark_id],:order => 'objectgrouptoobjectgroups.sortorder')%>
+         <%@models.each do |mod|%>
+           <dt>
+           	<%= link_to mod.title, modelgroups_path(:id=>mod.id), :class => 'get', :ajaxtarget => '#submod'+mod.id.to_s	 %>
+           </dt>
+              <dd><dl class="ModelYears" id="<%= 'submod'+mod.id.to_s %>">
+                <%if session[:model_id]!=nil and session[:model_id].to_i==mod.id%>
+                  <%@mod=Objectgroup.find(session[:model_id])%>
+                  <%if @mod.dtend!=nil %>
+                        <%@enddt=@mod.dtend%>
+                      <%else%>
+                        <%@enddt=Date.today%>
+                      <%end%>
+
+                         <%@enddt.year.downto(@mod.dtbegin.year) do |year|%>
+                         <%@modif=Objectgroup.find(:all,:joins => 'left join objectgrouptoobjectgroups on objectgroups.id=objectgrouptoobjectgroups.objectgroup_id',
+                                                  :conditions => 'objectgrouptoobjectgroups.parentgroup_id='+@mod.id.to_s+" and (year(dtend)>='"+year.to_s+"' or dtend is null) and year(dtbegin)<='"+year.to_s+"'",
+                                                  :order => 'objectgrouptoobjectgroups.sortorder')%>
+                           <%if @modif!=nil and @modif.size>0 %>
+                     <dt><h5><a name="<%= "year"+@mod.id.to_s+"_"+year.to_s %>"><%=  year.to_s %></a></h5></dt>
+                              <dd>
+	                              <ul>
+		                              <%@modif.each do |mf|%>
+		                              <li><h5><%=  link_to mf.title,modifications_path(:id => mf.id,:year=>year) %></h5></li>
+		                              <%end%>
+		                              <li class="Empty"></li>
+		                              <li></li>
+	                              </ul>
+                              </dd>
+                           <%end%>
+                         <%end%>
+                  <%end%>
+                </dl></dd>
+
+           <%end%>
+      <%end%>
+  </dl></dd>
+<%end%>
+</dl>
+
+<div class="Clear"></div>
+
+<div id="HaveAnotherCar">
+    <a href="#">Не нашли свою марку?</a>
+    <form action="#" method="get" class="FloatWindow">
+        <h3>Не нашли свою марку?</h3>
+        <p>Всё просто: оставьте свои координаты, чтобы мы могли сообщить вам, как только у нас появится информация об&nbsp;интересующих вас автомобилях.</p>
+    
+        <dl>
+            <dt>Ваше имя</dt>
+            <dd><input class="SmallText" type="text" name="UserName" value="" /></dd>
+
+            <dt>E-mail</dt>
+            <dd><input type="text" name="Email" value="" /></dd>
+            
+            <dt>Автомобиль</dt>
+            <dd>
+                <textarea name="CarName"></textarea>
+                <span>Пример: Audi A6, 4,2л, автомат, 2000 г., пробег 324 000 км</span>
+            </dd>
+
+            <dt></dt>
+            <dd><input type="submit" name="DoOrder" value=" Оставить запрос " /></dd>
+
+        </dl>
+    </div>
+
+   

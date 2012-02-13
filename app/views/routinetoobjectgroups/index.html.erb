@@ -1,0 +1,26 @@
+<h1>Listing routinetoobjectgroups</h1>
+
+<table>
+  <tr>
+    <th>Routineid</th>
+    <th>Routine</th>
+    <th>Objectgroupid</th>
+    <th>Objectgroup</th>
+  </tr>
+
+<% @routinetoobjectgroups.each do |routinetoobjectgroup| %>
+  <tr>
+    <td><%=h routinetoobjectgroup.routineid %></td>
+    <td><%=h routinetoobjectgroup.routine %></td>
+    <td><%=h routinetoobjectgroup.objectgroupid %></td>
+    <td><%=h routinetoobjectgroup.objectgroup %></td>
+    <td><%= link_to 'Show', routinetoobjectgroup %></td>
+    <td><%= link_to 'Edit', edit_routinetoobjectgroup_path(routinetoobjectgroup) %></td>
+    <td><%= link_to 'Destroy', routinetoobjectgroup, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New routinetoobjectgroup', new_routinetoobjectgroup_path %>

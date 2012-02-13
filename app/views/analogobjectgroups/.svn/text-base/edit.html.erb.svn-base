@@ -1,0 +1,40 @@
+<h1>Editing analogobjectgroup</h1>
+
+<% form_for(@analogobjectgroup) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :analogobjectgroupid %><br />
+    <%= f.text_field :analogobjectgroupid %>
+  </p>
+  <p>
+    <%= f.label :analogobjectgroup %><br />
+    <%= f.text_field :analogobjectgroup %>
+  </p>
+  <p>
+    <%= f.label :objectgroup %><br />
+    <%= f.text_field :objectgroup %>
+  </p>
+  <p>
+    <%= f.label :objectgroupid %><br />
+    <%= f.text_field :objectgroupid %>
+  </p>
+  <p>
+    <%= f.label :nestedgroupid %><br />
+    <%= f.text_field :nestedgroupid %>
+  </p>
+  <p>
+    <%= f.label :nestedgroup %><br />
+    <%= f.text_field :nestedgroup %>
+  </p>
+  <p>
+    <%= f.label :relationstype %><br />
+    <%= f.text_field :relationstype %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @analogobjectgroup %> |
+<%= link_to 'Back', analogobjectgroups_path %>

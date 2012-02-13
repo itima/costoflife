@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  parametertoobjectgroupid: MyString
+  parameterid: MyString
+  objectgroupid: MyString
+  parameter: 
+  objectgroup: 
+  valuestring: MyString
+  valuenumber: 1.5
+  valueboolean: false
+
+two:
+  parametertoobjectgroupid: MyString
+  parameterid: MyString
+  objectgroupid: MyString
+  parameter: 
+  objectgroup: 
+  valuestring: MyString
+  valuenumber: 1.5
+  valueboolean: false

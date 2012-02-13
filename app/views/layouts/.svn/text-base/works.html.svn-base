@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Cost Of Live</title>
+    <link rel="stylesheet" type="text/css" href="css/inner.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- чисто технически для разметки - использовать не надо -->
+    <table id="ModuleLayout">
+        <tr>
+            <td class="First">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="Last">&nbsp;</td>
+        </tr>
+    </table>
+<!-- закончилась чисто техническая фигня -->
+
+<div id="MetaLayout">
+    <div id="Header">
+        <div id="Logo">Почему опиум для?</div>
+    </div>
+
+    <div id="SubHeader">
+        <h1><a href="model.html">Транспорт</a>&nbsp;&rarr; <a href="#">Audi A4 Avant</a>&nbsp;&rarr; <a href="#">1995</a>&nbsp;&rarr; Работы</h1>
+    </div>
+    
+    <div id="RightCol">
+        <div class="Banner240x400"></div>
+        <div class="Banner240x400"></div>
+        <div class="Banner240x400"></div>
+    </div>
+
+    <div id="Content">
+        <form id="ContentSearch">
+            <input type="text" name="WhatToSearch" value="" size="60" />
+            <input type="submit" name="DoSearch" value=" Найти " />
+        </form>
+
+        <dl id="WorksList" class="Openable">
+            <dt>Подвеска, замена</dt>
+            <dd>
+                <div>
+                    <h4>Сопутствующие запчасти</h4>
+                    <ul>
+                        <li><a href="#">Рычаг передний, правый, нижний</li>
+                        <li><a href="#">Рычаг передний, правый, верхний</a></li>
+                        <li><a href="#">Рычаг передний, левый, нижний</a></li>
+                        <li><a href="#">Рычаг передний, левый, верхний</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Зачем</h4>
+                    <ul>
+                        <li>Да, собственно, ничего не будет... Так, развалится в итоге машинка и дело с концом.
+печать свозмож етенив с ваютные эксперимет прачнос товторн овклавленят в
+дохнов нерсией страблавас ворнослойна ворность рачноствить выповто можетные
+рачно дов друменицы. Объекст водущей строверимень удовкиевкие с в к любая</li>
+                </div>
+                <div>
+                    <h4>Где именно</h4>
+                    <ul>
+                        <li><a href="#">ООО &laquo;Лучший подарок&raquo;</a></li>
+                        <li><a href="#">СТО 1</a></li>
+                        <li><a href="#">ГаражиК</a></li>
+                        <li><a href="#">У Вована</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Каким образом</h4>
+                    <ul>
+                        <li><a href="#">Видеоотчет самый свежий для данного модельного ряда</a>, <span>19.11.2009</span></li>
+                        <li><a href="#">Видеоотчет 2 для данного модельного ряда</a>, <span>10.10.2009</span></li>
+                        <li><a href="#">Фотоотчет 1 для данного модельного ряда</a>, <span>08.10.2009</span></li>
+                        <li><a href="#">Фотоотчет 2 для данного модельного ряда</a>, <span>23.09.2009</span></li>
+                        <li><a href="#">Просто заметкеи</a>, <span>01.09.2009</span></li>
+                    </ul>
+                </div>
+            </dd>
+
+            <dt>Тормозная система, замена</dt>
+            <dd>
+                <div>
+                    <h4>Сопутствующие запчасти</h4>
+                    <ul>
+                        <li><a href="#">Трубочка задняя левая</li>
+                        <li><a href="#">Бачок расширительный для тормозной жидкости</a></li>
+                        <li><a href="#">Педаль тормоза</a></li>
+                        <li><a href="#">Тормозная жидкость</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Зачем</h4>
+                    <ul>
+                        <li>Да, собственно, ничего не будет... Так, развалится в итоге машинка и дело с концом.
+печать свозмож етенив с ваютные эксперимет прачнос товторн овклавленят в
+дохнов нерсией страблавас ворнослойна ворность рачноствить выповто можетные
+рачно дов друменицы. Объекст водущей строверимень удовкиевкие с в к любая</li>
+                </div>
+                <div>
+                    <h4>Где именно</h4>
+                    <ul>
+                        <li><a href="#">ООО &laquo;Лучший подарок&raquo;</a></li>
+                        <li><a href="#">СТО 1</a></li>
+                        <li><a href="#">ГаражиК</a></li>
+                        <li><a href="#">У Вована</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Каким образом</h4>
+                    <ul>
+                        <li><a href="#">Видеоотчет самый свежий для данного модельного ряда</a>, <span>19.11.2009</span></li>
+                        <li><a href="#">Видеоотчет 2 для данного модельного ряда</a>, <span>10.10.2009</span></li>
+                        <li><a href="#">Фотоотчет 1 для данного модельного ряда</a>, <span>08.10.2009</span></li>
+                        <li><a href="#">Фотоотчет 2 для данного модельного ряда</a>, <span>23.09.2009</span></li>
+                        <li><a href="#">Просто заметкеи</a>, <span>01.09.2009</span></li>
+                    </ul>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    
+    <div id="Footer">
+        CostOfLive и всё такое.
+    </div>
+
+</div>
+</body>
+</html>

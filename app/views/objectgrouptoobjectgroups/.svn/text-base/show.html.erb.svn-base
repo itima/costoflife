@@ -1,0 +1,28 @@
+<p>
+  <b>Parentgroup:</b>
+  <%=h @objectgrouptoobjectgroup.parentgroup %>
+</p>
+
+<p>
+  <b>Parentgroupid:</b>
+  <%=h @objectgrouptoobjectgroup.parentgroupid %>
+</p>
+
+<p>
+  <b>Objectgroup:</b>
+  <%=h @objectgrouptoobjectgroup.objectgroup %>
+</p>
+
+<p>
+  <b>Objectgroupid:</b>
+  <%=h @objectgrouptoobjectgroup.objectgroupid %>
+</p>
+
+<p>
+  <b>Sortorder:</b>
+  <%=h @objectgrouptoobjectgroup.sortorder %>
+</p>
+
+
+<%= link_to 'Edit', edit_objectgrouptoobjectgroup_path(@objectgrouptoobjectgroup) %> |
+<%= link_to 'Back', objectgrouptoobjectgroups_path %>

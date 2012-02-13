@@ -1,0 +1,20 @@
+<h1>Editing objecttype</h1>
+
+<% form_for(@objecttype) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :objecttypeid %><br />
+    <%= f.text_field :objecttypeid %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @objecttype %> |
+<%= link_to 'Back', objecttypes_path %>

@@ -1,0 +1,28 @@
+<h1>Editing routinetoobjectgroup</h1>
+
+<% form_for(@routinetoobjectgroup) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :routineid %><br />
+    <%= f.text_field :routineid %>
+  </p>
+  <p>
+    <%= f.label :routine %><br />
+    <%= f.text_field :routine %>
+  </p>
+  <p>
+    <%= f.label :objectgroupid %><br />
+    <%= f.text_field :objectgroupid %>
+  </p>
+  <p>
+    <%= f.label :objectgroup %><br />
+    <%= f.text_field :objectgroup %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @routinetoobjectgroup %> |
+<%= link_to 'Back', routinetoobjectgroups_path %>

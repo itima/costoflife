@@ -1,0 +1,33 @@
+<p>
+  <b>Parttoworkid:</b>
+  <%=h @parttowork.parttoworkid %>
+</p>
+
+<p>
+  <b>Partid:</b>
+  <%=h @parttowork.partid %>
+</p>
+
+<p>
+  <b>Part:</b>
+  <%=h @parttowork.part %>
+</p>
+
+<p>
+  <b>Completedworkid:</b>
+  <%=h @parttowork.completedworkid %>
+</p>
+
+<p>
+  <b>Completedwork:</b>
+  <%=h @parttowork.completedwork %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @parttowork.price %>
+</p>
+
+
+<%= link_to 'Edit', edit_parttowork_path(@parttowork) %> |
+<%= link_to 'Back', parttoworks_path %>

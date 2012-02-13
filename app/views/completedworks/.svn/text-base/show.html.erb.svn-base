@@ -1,0 +1,58 @@
+<p>
+  <b>Completedworkid:</b>
+  <%=h @completedwork.completedworkid %>
+</p>
+
+<p>
+  <b>Serviceid:</b>
+  <%=h @completedwork.serviceid %>
+</p>
+
+<p>
+  <b>Service:</b>
+  <%=h @completedwork.service %>
+</p>
+
+<p>
+  <b>Objectintheprocessionid:</b>
+  <%=h @completedwork.objectintheprocessionid %>
+</p>
+
+<p>
+  <b>Objectintheprocession:</b>
+  <%=h @completedwork.objectintheprocession %>
+</p>
+
+<p>
+  <b>Routineid:</b>
+  <%=h @completedwork.routineid %>
+</p>
+
+<p>
+  <b>Routine:</b>
+  <%=h @completedwork.routine %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @completedwork.title %>
+</p>
+
+<p>
+  <b>Dtbegin:</b>
+  <%=h @completedwork.dtbegin %>
+</p>
+
+<p>
+  <b>Dtend:</b>
+  <%=h @completedwork.dtend %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @completedwork.price %>
+</p>
+
+
+<%= link_to 'Edit', edit_completedwork_path(@completedwork) %> |
+<%= link_to 'Back', completedworks_path %>

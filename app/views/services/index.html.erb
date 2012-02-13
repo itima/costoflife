@@ -1,0 +1,32 @@
+<h1>Listing services</h1>
+
+<table>
+  <tr>
+    <th>Serviceid</th>
+    <th>Address</th>
+    <th>Phone</th>
+    <th>Fax</th>
+    <th>Title</th>
+    <th>Googlegeo</th>
+    <th>Cityid</th>
+  </tr>
+
+<% @services.each do |service| %>
+  <tr>
+    <td><%=h service.serviceid %></td>
+    <td><%=h service.address %></td>
+    <td><%=h service.phone %></td>
+    <td><%=h service.fax %></td>
+    <td><%=h service.title %></td>
+    <td><%=h service.googlegeo %></td>
+    <td><%=h service.cityid %></td>
+    <td><%= link_to 'Show', service %></td>
+    <td><%= link_to 'Edit', edit_service_path(service) %></td>
+    <td><%= link_to 'Destroy', service, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New service', new_service_path %>

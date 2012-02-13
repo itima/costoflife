@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  parttoworkid: MyString
+  partid: MyString
+  part: 
+  completedworkid: MyString
+  completedwork: 
+  price: 1.5
+
+two:
+  parttoworkid: MyString
+  partid: MyString
+  part: 
+  completedworkid: MyString
+  completedwork: 
+  price: 1.5

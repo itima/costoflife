@@ -1,0 +1,32 @@
+<h1>Listing objectintheprocessions</h1>
+
+<table>
+  <tr>
+    <th>Objectintheprocessionid</th>
+    <th>Objectgroupid</th>
+    <th>Objectgroup</th>
+    <th>Objecttypeid</th>
+    <th>Objecttype</th>
+    <th>Title</th>
+    <th>Sortorder</th>
+  </tr>
+
+<% @objectintheprocessions.each do |objectintheprocession| %>
+  <tr>
+    <td><%=h objectintheprocession.objectintheprocessionid %></td>
+    <td><%=h objectintheprocession.objectgroupid %></td>
+    <td><%=h objectintheprocession.objectgroup %></td>
+    <td><%=h objectintheprocession.objecttypeid %></td>
+    <td><%=h objectintheprocession.objecttype %></td>
+    <td><%=h objectintheprocession.title %></td>
+    <td><%=h objectintheprocession.sortorder %></td>
+    <td><%= link_to 'Show', objectintheprocession %></td>
+    <td><%= link_to 'Edit', edit_objectintheprocession_path(objectintheprocession) %></td>
+    <td><%= link_to 'Destroy', objectintheprocession, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New objectintheprocession', new_objectintheprocession_path %>

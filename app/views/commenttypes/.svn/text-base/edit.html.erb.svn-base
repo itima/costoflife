@@ -1,0 +1,20 @@
+<h1>Editing commenttype</h1>
+
+<% form_for(@commenttype) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :commenttypeid %><br />
+    <%= f.text_field :commenttypeid %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @commenttype %> |
+<%= link_to 'Back', commenttypes_path %>

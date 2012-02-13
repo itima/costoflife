@@ -1,0 +1,33 @@
+<p>
+  <b>Commentid:</b>
+  <%=h @comment.commentid %>
+</p>
+
+<p>
+  <b>Targetid:</b>
+  <%=h @comment.targetid %>
+</p>
+
+<p>
+  <b>Commenttypeid:</b>
+  <%=h @comment.commenttypeid %>
+</p>
+
+<p>
+  <b>Commenttype:</b>
+  <%=h @comment.commenttype %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @comment.content %>
+</p>
+
+<p>
+  <b>Sortorder:</b>
+  <%=h @comment.sortorder %>
+</p>
+
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>

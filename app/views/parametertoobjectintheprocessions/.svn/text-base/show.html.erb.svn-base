@@ -1,0 +1,43 @@
+<p>
+  <b>Parametertoobjectintheprocessionid:</b>
+  <%=h @parametertoobjectintheprocession.parametertoobjectintheprocessionid %>
+</p>
+
+<p>
+  <b>Parameterid:</b>
+  <%=h @parametertoobjectintheprocession.parameterid %>
+</p>
+
+<p>
+  <b>Parameter:</b>
+  <%=h @parametertoobjectintheprocession.parameter %>
+</p>
+
+<p>
+  <b>Objectintheprocessionid:</b>
+  <%=h @parametertoobjectintheprocession.objectintheprocessionid %>
+</p>
+
+<p>
+  <b>Objectintheprocession:</b>
+  <%=h @parametertoobjectintheprocession.objectintheprocession %>
+</p>
+
+<p>
+  <b>Valuestring:</b>
+  <%=h @parametertoobjectintheprocession.valuestring %>
+</p>
+
+<p>
+  <b>Valuenumber:</b>
+  <%=h @parametertoobjectintheprocession.valuenumber %>
+</p>
+
+<p>
+  <b>Valueboolean:</b>
+  <%=h @parametertoobjectintheprocession.valueboolean %>
+</p>
+
+
+<%= link_to 'Edit', edit_parametertoobjectintheprocession_path(@parametertoobjectintheprocession) %> |
+<%= link_to 'Back', parametertoobjectintheprocessions_path %>

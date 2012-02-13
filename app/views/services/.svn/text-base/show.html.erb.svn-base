@@ -1,0 +1,38 @@
+<p>
+  <b>Serviceid:</b>
+  <%=h @service.serviceid %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @service.address %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%=h @service.phone %>
+</p>
+
+<p>
+  <b>Fax:</b>
+  <%=h @service.fax %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @service.title %>
+</p>
+
+<p>
+  <b>Googlegeo:</b>
+  <%=h @service.googlegeo %>
+</p>
+
+<p>
+  <b>Cityid:</b>
+  <%=h @service.cityid %>
+</p>
+
+
+<%= link_to 'Edit', edit_service_path(@service) %> |
+<%= link_to 'Back', services_path %>

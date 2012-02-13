@@ -1,0 +1,72 @@
+<h2>Listing objectgroups</h2>
+
+<%
+	def show_tree(level)
+		html= ""
+		level.each do |elem|
+			html+= "<div style='padding-left: 10px;'>"
+				html+= elem.title
+				unless elem.children.empty?
+					html+= show_tree(elem.children)
+				end
+			html+= "</div>"
+		end
+		html
+	end
+%>
+
+<%=  show_tree(@objectgroups) %>
+
+
+
+<%if true!=true%>
+
+<table>
+
+<% @objectgroups.each do |objectgroup| %>
+<ol>
+ <tr>
+<th>
+<li><%=link_to objectgroup.title,objectgroups_path(:pgr => objectgroup.id) %></li>
+</th>
+<%if @parentй1Ц!=0 %>
+ <%if objectgroup.checkparent(@parent.to_i)==true %>
+
+     <%end%>
+<%end%>
+</tr>
+</ol>
+
+<%end%>
+
+</table>
+<table>
+  <tr>
+    <th>Objectgroupid</th>
+    <th>Parentgroupid</th>
+    <th>Parentid</th>
+    <th>Title</th>
+    <th>Dtbegin</th>
+    <th>Dtend</th>
+    <th>Sortorder</th>
+  </tr>
+
+<% @objectgroups.each do |objectgroup| %>
+  <tr>
+    <td><%=h objectgroup.objectgroupid %></td>
+    <td><%=h objectgroup.parentgroupid %></td>
+    <td><%=h objectgroup.parentid %></td>
+    <td><%=h objectgroup.title %></td>
+    <td><%=h objectgroup.dtbegin %></td>
+    <td><%=h objectgroup.dtend %></td>
+    <td><%=h objectgroup.sortorder %></td>
+    <td><%= link_to 'Show', objectgroup %></td>
+    <td><%= link_to 'Edit', edit_objectgroup_path(objectgroup) %></td>
+    <td><%= link_to 'Destroy', objectgroup, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%end%>
+<br />
+
+<%= link_to 'New objectgroup', new_objectgroup_path %>

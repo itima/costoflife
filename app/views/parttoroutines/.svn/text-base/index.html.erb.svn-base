@@ -1,0 +1,28 @@
+<h1>Listing parttoroutines</h1>
+
+<table>
+  <tr>
+    <th>Parttoroutineid</th>
+    <th>Partid</th>
+    <th>Part</th>
+    <th>Routineid</th>
+    <th>Routine</th>
+  </tr>
+
+<% @parttoroutines.each do |parttoroutine| %>
+  <tr>
+    <td><%=h parttoroutine.parttoroutineid %></td>
+    <td><%=h parttoroutine.partid %></td>
+    <td><%=h parttoroutine.part %></td>
+    <td><%=h parttoroutine.routineid %></td>
+    <td><%=h parttoroutine.routine %></td>
+    <td><%= link_to 'Show', parttoroutine %></td>
+    <td><%= link_to 'Edit', edit_parttoroutine_path(parttoroutine) %></td>
+    <td><%= link_to 'Destroy', parttoroutine, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New parttoroutine', new_parttoroutine_path %>

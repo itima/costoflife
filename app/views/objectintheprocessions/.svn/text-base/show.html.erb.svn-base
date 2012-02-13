@@ -1,0 +1,38 @@
+<p>
+  <b>Objectintheprocessionid:</b>
+  <%=h @objectintheprocession.objectintheprocessionid %>
+</p>
+
+<p>
+  <b>Objectgroupid:</b>
+  <%=h @objectintheprocession.objectgroupid %>
+</p>
+
+<p>
+  <b>Objectgroup:</b>
+  <%=h @objectintheprocession.objectgroup %>
+</p>
+
+<p>
+  <b>Objecttypeid:</b>
+  <%=h @objectintheprocession.objecttypeid %>
+</p>
+
+<p>
+  <b>Objecttype:</b>
+  <%=h @objectintheprocession.objecttype %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @objectintheprocession.title %>
+</p>
+
+<p>
+  <b>Sortorder:</b>
+  <%=h @objectintheprocession.sortorder %>
+</p>
+
+
+<%= link_to 'Edit', edit_objectintheprocession_path(@objectintheprocession) %> |
+<%= link_to 'Back', objectintheprocessions_path %>

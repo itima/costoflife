@@ -1,0 +1,32 @@
+<h1>Editing parttoroutine</h1>
+
+<% form_for(@parttoroutine) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :parttoroutineid %><br />
+    <%= f.text_field :parttoroutineid %>
+  </p>
+  <p>
+    <%= f.label :partid %><br />
+    <%= f.text_field :partid %>
+  </p>
+  <p>
+    <%= f.label :part %><br />
+    <%= f.text_field :part %>
+  </p>
+  <p>
+    <%= f.label :routineid %><br />
+    <%= f.text_field :routineid %>
+  </p>
+  <p>
+    <%= f.label :routine %><br />
+    <%= f.text_field :routine %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @parttoroutine %> |
+<%= link_to 'Back', parttoroutines_path %>

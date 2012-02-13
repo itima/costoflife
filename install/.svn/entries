@@ -1,0 +1,129 @@
+10
+
+dir
+127
+svn+ssh://alexey@probaz.ru/var/repos/costoflife.ru/trunk/install
+svn+ssh://alexey@probaz.ru/var/repos/costoflife.ru
+
+
+
+2010-05-07T10:13:02.098991Z
+8
+ilya
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+637d1166-1a50-49f4-8e42-465119523c93
+
+test
+dir
+
+app
+dir
+
+tmp
+dir
+
+log
+dir
+
+Rakefile
+file
+
+
+
+
+2010-05-07T11:30:13.000000Z
+17f2f134da4cd31ea095d5868ca89e86
+2010-05-07T10:13:02.098991Z
+8
+ilya
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+307
+
+script
+dir
+
+config
+dir
+
+db
+dir
+
+doc
+dir
+
+lib
+dir
+
+vendor
+dir
+
+README
+file
+
+
+
+
+2010-05-07T11:30:13.000000Z
+a58e68a7599c976f071d5b9c6fa67fb3
+2010-05-07T10:13:02.098991Z
+8
+ilya
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10011
+
+public
+dir
+

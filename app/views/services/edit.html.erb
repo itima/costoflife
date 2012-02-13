@@ -1,0 +1,40 @@
+<h1>Editing service</h1>
+
+<% form_for(@service) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :serviceid %><br />
+    <%= f.text_field :serviceid %>
+  </p>
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :fax %><br />
+    <%= f.text_field :fax %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :googlegeo %><br />
+    <%= f.text_field :googlegeo %>
+  </p>
+  <p>
+    <%= f.label :cityid %><br />
+    <%= f.text_field :cityid %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @service %> |
+<%= link_to 'Back', services_path %>

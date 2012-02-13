@@ -1,0 +1,36 @@
+ul.block
+{
+margin: 0;
+padding: 0;
+list-style-type: none;
+width: 400px;
+}
+
+ul.block   li { display: inline; list-style-type: none; }
+
+ul.block   li a
+{
+text-decoration: none;
+display: block;
+float: left;
+width: 79px;
+height:81px;
+color: #000;
+/* background-color: #036; */
+ background:#ffffff url('/images/element.jpg') no-repeat;
+/* border: 1px solid #369; */
+}
+
+ul.block   li a:hover, ul.block   li.current a
+{
+color: #369;
+/* background-color: #369; */
+}
+
+.red-border {border: 10px solid #be0000; padding: 1em;}
+
+#transports ul {list-style-type: none;}
+
+li.year {display: block; float: left; clear: both; width: 80px; color: #be0000; font-size: 1.2em;}
+
+li.blocks {display: block; width: 400px;}

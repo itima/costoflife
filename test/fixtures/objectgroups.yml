@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  objectgroupid: MyString
+  parentgroupid: MyString
+  parentid: 1
+  title: MyString
+  dtbegin: 2010-05-06
+  dtend: 2010-05-06
+  sortorder: 1
+
+two:
+  objectgroupid: MyString
+  parentgroupid: MyString
+  parentid: 1
+  title: MyString
+  dtbegin: 2010-05-06
+  dtend: 2010-05-06
+  sortorder: 1

@@ -1,0 +1,26 @@
+
+<h2><%= @title %></h2>
+
+<p>
+  <b>Модель:</b>
+  <% @objectgroup.ancestors.reverse_each do |model| %>
+  	<%= link_to model.title, model %> →
+  <% end %>
+  <%=h @objectgroup.title %>
+</p>
+
+
+<p>
+  <b>Начало выпуска:</b>
+  <%=h @objectgroup.dtbegin %>
+</p>
+
+<p>
+  <b>Конец выпуска:</b>
+  <%=h @objectgroup.dtend %>
+</p>
+
+
+
+<%#= link_to 'Edit', edit_objectgroup_path(@objectgroup) %>
+<%= link_to '← Назад', objectgroups_path %>

@@ -1,0 +1,13 @@
+/* Заголовок */
+#Header								{ position: relative; top: 0; left: 0; margin-left: 0px; padding: 10px 20px 10px 10px; z-index: 50; border-top: 10px solid #ffa800; background: #DFDFDF;}
+#Logo								{ font-size: 4em; color: #000; font-family: Times}
+#Logo A								{ text-decoration: none; color: #666; }
+
+#SubHeader							{ margin: 40px 0 10px 10px; font-size: 2em; }
+H1									{ font-size: 1em; float: left; }
+#SubHeader UL						{ margin: 0; padding: 0; list-style-type: none;}
+#SubHeader UL LI					{ margin: 0 1em 0 0; padding: 0; list-style-type: none; float: left; position: relative; top: 0; left: 0;}
+#SubHeader A.Crumb					{ display: block; float: left; padding-right: 13px; height: 1.2em; color: #black; }
+#SubHeader A.Hovered				{ background: url('../i/BCDownArrow.gif') no-repeat right center; }
+#SubHeader LI LI					{ margin: 0 0 0.3em 0; padding: 0; overflow: auto; height: auto; float: none; white-space: nowrap;}
+#SubHeader UL UL					{ display: none; position: absolute; top: 1em; left: 0; background: white; border: 2px solid #999999; padding: 20px; font-size: 0.65em; z-index: 90;}

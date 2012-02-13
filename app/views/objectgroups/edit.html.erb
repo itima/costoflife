@@ -1,0 +1,44 @@
+<h1>Editing objectgroup</h1>
+
+<% form_for(@objectgroup) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :objectgroupid %><br />
+    <%= f.text_field :objectgroupid %>
+  </p>
+  <p>
+    <%= f.label :parentgroupid %><br />
+    <%= f.text_field :parentgroupid %>
+  </p>
+  <p>
+    <%= f.label :parent_id %><br />
+    <%= f.text_field :parent_id %>
+  </p>
+    <p>
+    <%= f.label :position %><br />
+    <%= f.text_field :position %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :dtbegin %><br />
+    <%= f.date_select :dtbegin %>
+  </p>
+  <p>
+    <%= f.label :dtend %><br />
+    <%= f.date_select :dtend %>
+  </p>
+  <p>
+    <%= f.label :sortorder %><br />
+    <%= f.text_field :sortorder %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @objectgroup %> |
+<%= link_to 'Back', objectgroups_path %>

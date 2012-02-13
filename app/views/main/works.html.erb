@@ -1,0 +1,117 @@
+<% @breadcrumbs = "<ul> 
+		<li>
+			#{link_to "Транспорт",models_path(:level=>nil,:id=>nil), :class => 'Crumb'}&nbsp;&rarr;&nbsp;
+			<ul>
+				<li>#{link_to "Транспорт",models_path(:level=>nil,:id=>nil)}</li>
+				<li>#{ link_to "СТО",serivcemap_path}</a></li>
+				<li><a href='#'>Компрессоры</a></li>
+				<li><a href='#'>Квартиры</a></li>
+				<li><a href='#'>Ядерные реакторы</a></li>
+			</ul></li>" %>
+
+<% @breadcrumbs += "<li>" + link_to("#{@brand.title}", models_path(:level => 0,:id => @brand.id), :class => 'Crumb') + "&nbsp;&rarr;&nbsp;" %>
+<% 
+   @breadcrumbs += "<ul>"
+ 	@brands.each do |br2|
+ 		@breadcrumbs += "<li>#{link_to(br2.title,models_path(:id=>br2.id, :level=>'0'))}</li>"
+ 	end 
+ 	@breadcrumbs += "</ul>"
+%>
+
+ <% @breadcrumbs+=  "</li><li>" +  link_to(@modelgroup.title,models_path(:level => 1,:id => @modelgroup.id), :class => 'Crumb') + "&nbsp;&rarr;&nbsp;"
+	 @breadcrumbs += "<ul>"
+  	 @models.each do |mod2|
+ 		@breadcrumbs += "<li>#{link_to(mod2.title,models_path(:id=>mod2.id,:level=>'1'))}</li>"
+ 	end 
+ 	@breadcrumbs += "</ul></li>"
+ %>      
+<% @breadcrumbs +=  "<li>" + link_to(session[:year],models_path(:level => 1,:id => @modelgroup.id)+"#year"+session[:model_id].to_s+"_"+session[:year].to_s, :class => 'Crumb') + "&nbsp;&rarr;&nbsp;<ul>"  %>
+<%
+	@model.dtend ? @enddt = @model.dtend : @enddt = Date.today 
+	 
+	@enddt.year.downto(@model.dtbegin.year) do |year|
+	@mod_groups=Objectgroup.find(:all,:joins => 'left join objectgrouptoobjectgroups on objectgroups.id=objectgrouptoobjectgroups.objectgroup_id',:conditions =>  'objectgrouptoobjectgroups.parentgroup_id='+@model.id.to_s+" and (year(dtend)>='"+year.to_s+"' or dtend is null) and  year(dtbegin)<='"+year.to_s+"'",:order => 'objectgrouptoobjectgroups.sortorder')
+		if @mod_groups!=nil and @mod_groups.size>0
+			@breadcrumbs += "<li>" + link_to(year,models_path(:level => '1',:id => session[:model_id])+"#year"+session[:model_id].to_s+"_"+year.to_s)  + "</li>"
+		end
+	end
+%>		
+<% @breadcrumbs += "</ul>"%>
+
+
+<% @breadcrumbs += "</li><li>" + link_to("#{@mod.title}",costs_path(:id => session[:modif_id],:year=>session[:year]), :class => 'Crumb')  + "&nbsp;&rarr;&nbsp;<ul>" 
+  	 @modifs.each do |modif|
+ 		@breadcrumbs += "<li>" + link_to("#{modif.title}",costs_path(:id => modif.id,:year=>session[:year])) + "</li>"
+ 	end 
+ 	@breadcrumbs += "</ul>"
+
+%>
+
+<%if @one=='true'
+   session[:title]=link_to("#{Routine.find(@works.to_i).title}",works_path(:og_id =>@mod.id ,:works=>@works, :one => true,:mod_id=>@mod.id), :class => 'Crumb')   + "<ul>" 
+
+  @wks.each do |wk|
+    session[:title]+= "<li>" + link_to("#{wk.title}",works_path(:og_id =>@mod.id ,:works=>wk, :one => true,:mod_id=>@mod.id))  +"</li>"
+  end
+  session[:title]+="</ul>"
+end
+%>
+<% @breadcrumbs += "<li>" + session[:title] + "</li></ul>"%>
+
+<dl id="WorksList" class="notOpenable">
+  <%@works.each do |work_id|%>
+     <%@work=Routine.find(work_id.to_i)%>
+       <dt><%=  @work.title %></dt>
+            <dd>
+                <div>
+                    <h4>Сопутствующие запчасти</h4>
+                    <%@parts=Completedwork.find_by_sql("SELECT parts.id,parts.title FROM
+completedworks
+LEFT JOIN objectintheprocessions ON objectintheprocessions.id=completedworks.objectintheprocession_id AND objectintheprocessions.objectgroup_id="+@objectgroup.id.to_s+"
+LEFT JOIN routines ON routines.id=completedworks.routine_id
+LEFT JOIN parttoworks ON parttoworks.completedwork_id=completedworks.id
+LEFT JOIN parts ON parts.id=parttoworks.part_id
+WHERE routines.id="+@work.id.to_s+" GROUP BY parts.id")%>
+                    <ul>
+                       <%@parts.each do |part|%>
+                        <li><a href="#"><%= part.title %></a></li>
+                        <%end%>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Зачем</h4>
+                    <ul>
+                        <li>Да, собственно, ничего не будет... Так, развалится в итоге машинка и дело с концом.
+печать свозмож етенив с ваютные эксперимет прачнос товторн овклавленят в
+дохнов нерсией страблавас ворнослойна ворность рачноствить выповто можетные
+рачно дов друменицы. Объекст водущей строверимень удовкиевкие с в к любая</li>
+                </div>
+                <div>
+                    <h4>Где именно</h4>
+                     <%@services=Completedwork.find_by_sql("SELECT services.id,services.title FROM
+completedworks
+LEFT JOIN objectintheprocessions ON objectintheprocessions.id=completedworks.objectintheprocession_id AND objectintheprocessions.objectgroup_id="+@objectgroup.id.to_s+"
+LEFT JOIN routines ON routines.id=completedworks.routine_id
+LEFT JOIN services ON completedworks.service_id=services.id
+WHERE routines.id="+@work.id.to_s+" GROUP BY services.id")%>
+                    <ul>
+                      <%@services.each do |serv|%>
+                        <li><%=link_to serv.title,firms_path(:services=>serv,:og_id => @objectgroup.id, :og_title => @objectgroup.title,:one => true,:mod_id=>session[:modif_id].to_i,:work_id=>@work.id) %></li>
+                      <%end%>
+                        <li><%=link_to "Показать все СТО","#" %></li>
+                     </ul>
+                </div>
+                <div>
+                    <h4>Каким образом</h4>
+                    <ul>
+                        <li><a href="#">Видеоотчет самый свежий для данного модельного ряда</a>, <span>19.11.2009</span></li>
+                        <li><a href="#">Видеоотчет 2 для данного модельного ряда</a>, <span>10.10.2009</span></li>
+                        <li><a href="#">Фотоотчет 1 для данного модельного ряда</a>, <span>08.10.2009</span></li>
+                        <li><a href="#">Фотоотчет 2 для данного модельного ряда</a>, <span>23.09.2009</span></li>
+                        <li><a href="#">Просто заметкеи</a>, <span>01.09.2009</span></li>
+                    </ul>
+                </div>
+            </dd>
+<%end%>
+           
+        </dl>

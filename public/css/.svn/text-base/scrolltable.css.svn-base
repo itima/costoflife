@@ -1,0 +1,34 @@
+
+/******************************
+* Скроллирующиеся таблицы
+******************************/
+.ScrollingTableIn				{ height: 500px; position: relative; top: 0; left: 0; font-size: 1.2em;}
+.ScrollTableContainer			{ overflow: auto; margin-top: 20px;}
+.ScrollingTableIn H3			{ margin-bottom: 3px; }
+.ScrollingTableIn .Comment		{ font-size: 0.875em; color: #666666; }
+.ScrollingTableIn TABLE			{ table-layout: fixed; width: auto; }
+.ScrollingTableIn TD			{ width: 300px; padding: 0.5em 2em 0.5em 0; text-align: right;}
+.ScrollingTableIn THEAD TH		{ width: 400px; white-space: nowrap; border-bottom: 1px solid #ABABAB; padding: 0 2em 0.5em 0;}
+.ScrollingTableIn THEAD TD		{ padding-bottom: 0.5em; border-bottom: 1px solid #ABABAB; vertical-align: bottom;}
+
+.ScrollingTableIn THEAD EM		{ display: block; font-style: normal; font-size: 0.8em; color: #666; }
+
+.ScrollingTableIn TBODY TH		{ width: 400px; padding: 0.5em 2em 0.5em 0; }
+.ScrollingTableIn TBODY TD		{}
+
+.ScrollingTableIn .SubHeader TH	{ font-size: 1.4em; color: black; padding-top: 1em; }
+.ScrollingTableIn TBODY TR.Hovered TD	{ background: #fbf9eb; }
+.ScrollingTableIn TBODY TR.Hovered TH	{ background: #fbf9eb; }
+
+.ScrollingTableIn TBODY TR.SubHeader TH { background: none; }
+.ScrollingTableIn TBODY TR.SubHeader TD { background: none; }
+
+
+.ScrollingTablePseudoTH			{ position: absolute; top: 0px; left: 0; background: white; }
+
+.ScrollingTableIn .ScrollingTablePseudoTH THEAD TH		{}
+.ScrollingTableIn .ScrollingTablePseudoTH TBODY TH		{ }
+
+/*
+.ScrollingTablePseudoTH DIV		{ width: 400px; padding: 0.5em 2em 0.5em 0;border: 1px dotted green; }
+*/

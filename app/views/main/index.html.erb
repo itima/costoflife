@@ -1,0 +1,14 @@
+	<% @breadcrumbs = "<ul> 
+		<li>
+			#{link_to "Транспорт",models_path(:level=>nil,:id=>nil), :class => 'Crumb'}
+			<ul>
+				<li>#{link_to "Транспорт",models_path(:level=>nil,:id=>nil)}</li>
+				<li>#{ link_to "СТО",serivcemap_path}</a></li>
+				<li><a href='#'>Компрессоры</a></li>
+				<li><a href='#'>Квартиры</a></li>
+				<li><a href='#'>Ядерные реакторы</a></li>
+			</ul></li></ul>" %>
+			
+<%= link_to "Транспорт",models_path(:level=>nil,:id=>nil) %><br/>
+<%= link_to "СТО",serivcemap_path %>
+<%= @res %>

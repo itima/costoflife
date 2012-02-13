@@ -1,0 +1,13 @@
+<p>
+  <b>Routineid:</b>
+  <%=h @routine.routineid %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @routine.title %>
+</p>
+
+
+<%= link_to 'Edit', edit_routine_path(@routine) %> |
+<%= link_to 'Back', routines_path %>

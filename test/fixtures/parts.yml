@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  partid: MyString
+  parttypeid: MyString
+  parttype: 
+  title: MyString
+
+two:
+  partid: MyString
+  parttypeid: MyString
+  parttype: 
+  title: MyString

@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  serviceid: MyString
+  address: MyString
+  phone: MyString
+  fax: MyString
+  title: MyString
+  googlegeo: MyString
+  cityid: MyString
+
+two:
+  serviceid: MyString
+  address: MyString
+  phone: MyString
+  fax: MyString
+  title: MyString
+  googlegeo: MyString
+  cityid: MyString

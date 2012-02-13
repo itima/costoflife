@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  commentid: MyString
+  targetid: MyString
+  commenttypeid: MyString
+  commenttype: 
+  content: 
+  sortorder: 1
+
+two:
+  commentid: MyString
+  targetid: MyString
+  commenttypeid: MyString
+  commenttype: 
+  content: 
+  sortorder: 1

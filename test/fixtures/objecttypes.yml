@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  objecttypeid: MyString
+  title: MyString
+
+two:
+  objecttypeid: MyString
+  title: MyString

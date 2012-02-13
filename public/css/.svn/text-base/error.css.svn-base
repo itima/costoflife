@@ -1,0 +1,9 @@
+@import url("common.css");
+@import url("tech_layout_module.css");
+@import url("block_Header.css");
+@import url("block_Footer.css");
+
+
+/****** 2. LAYOUT 
+*******
+******************************/

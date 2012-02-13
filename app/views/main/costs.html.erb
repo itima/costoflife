@@ -1,0 +1,206 @@
+<% @breadcrumbs = "<ul> 
+		<li>
+			#{link_to "Транспорт",models_path(:level=>nil,:id=>nil), :class => 'Crumb'}&nbsp;&rarr;&nbsp;
+			<ul>
+				<li>#{link_to "Транспорт",models_path(:level=>nil,:id=>nil)}</li>
+				<li>#{ link_to "СТО",serivcemap_path}</a></li>
+				<li><a href='#'>Компрессоры</a></li>
+				<li><a href='#'>Квартиры</a></li>
+				<li><a href='#'>Ядерные реакторы</a></li>
+			</ul></li>" %>
+
+<% @breadcrumbs += "<li>" + link_to("#{@brand.title}", models_path(:level => 0,:id => @brand.id), :class => 'Crumb') + "&nbsp;&rarr;&nbsp;" %>
+<% 
+   @breadcrumbs += "<ul>"
+ 	@brands.each do |br2|
+ 		@breadcrumbs += "<li>#{link_to(br2.title,models_path(:id=>br2.id, :level=>'0'))}</li>"
+ 	end 
+ 	@breadcrumbs += "</ul>"
+%>
+
+ <% @breadcrumbs+=  "</li><li>" +  link_to(@modelgroup.title,models_path(:level => 1,:id => @modelgroup.id), :class => 'Crumb') + "&nbsp;&rarr;&nbsp;"
+	 @breadcrumbs += "<ul>"
+  	 @models.each do |mod2|
+ 		@breadcrumbs += "<li>#{link_to(mod2.title,models_path(:id=>mod2.id,:level=>'1'))}</li>"
+ 	end 
+ 	@breadcrumbs += "</ul></li>"
+ %>      
+<% @breadcrumbs +=  "<li>" + link_to(session[:year],models_path(:level => 1,:id => @modelgroup.id)+"#year"+session[:model_id].to_s+"_"+session[:year].to_s, :class => 'Crumb') + "&nbsp;&rarr;&nbsp;<ul>"  %>
+<%
+	@model.dtend ? @enddt = @model.dtend : @enddt = Date.today 
+	 
+	@enddt.year.downto(@model.dtbegin.year) do |year|
+	@mod_groups=Objectgroup.find(:all,:joins => 'left join objectgrouptoobjectgroups on objectgroups.id=objectgrouptoobjectgroups.objectgroup_id',:conditions =>  'objectgrouptoobjectgroups.parentgroup_id='+@model.id.to_s+" and (year(dtend)>='"+year.to_s+"' or dtend is null) and  year(dtbegin)<='"+year.to_s+"'",:order => 'objectgrouptoobjectgroups.sortorder')
+		if @mod_groups!=nil and @mod_groups.size>0
+			@breadcrumbs += "<li>" + link_to(year,models_path(:level => '1',:id => session[:model_id])+"#year"+session[:model_id].to_s+"_"+year.to_s)  + "</li>"
+		end
+	end
+%>		
+<% @breadcrumbs += "</ul>"%>
+
+<% @breadcrumbs += "</li><li>" + link_to("#{@mod.title}",costs_path(:id => session[:modif_id],:year=>session[:year]), :class => 'Crumb')  + "&nbsp;&rarr;&nbsp;<ul>" 
+  	 @modifs.each do |modif|
+ 		@breadcrumbs += "<li>" + link_to("#{modif.title}",costs_path(:id => modif.id,:year=>session[:year])) + "</li>"
+ 	end 
+ 	@breadcrumbs += "</ul>"
+
+%>
+
+<% @breadcrumbs += "<li>" + session[:title] + "</li></ul>"%>
+
+<ul>
+<%mod=@mod%>
+  <div class="ScrollingTableIn">
+            <h3><%= "#{mod.title}, (#{session[:year]})" %></h3>
+            <p class="Comment">стоимость владения в рублях при соответствующем пробеге</p>
+			<div class="ScrollTableContainer">
+				<table class="ScrollingTable">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <td>0</td>
+                        <td><em>0</em>25&nbsp;000</td>
+                        <td><em>25&nbsp;000</em>50&nbsp;000</td>
+                        <td><em>50&nbsp;000</em>75&nbsp;000</td>
+                        <td><em>75&nbsp;000</em>100&nbsp;000</td>
+                        <td><em>100&nbsp;000</em>125&nbsp;000</td>
+                        <td><em>125&nbsp;000</em>150&nbsp;000</td>
+                        <td><em>150&nbsp;000</em>175&nbsp;000</td>
+                        <td><em>175&nbsp;000</em>200&nbsp;000</td>
+                        <td><em>200&nbsp;000</em></td>
+                   </tr>
+                </thead>
+                <tbody>
+                    <tr class="SubHeader">
+                        <th><b>Работы</b></th>
+                        <td colspan="10"></td>
+                    </tr>
+                    <%#@works = Routine.find(:all,:joins => "left join routinetoobjectgroups on routines.id=routinetoobjectgroups.routine_id",:conditions => "routinetoobjectgroups.objectgroup_id="+mod.id.to_s)%>
+                    <%@works = Routine.find_by_sql("SELECT 	routines.id,
+	routines.title,
+	(SUM(work1.price)/COUNT(work1.price)) AS s0,
+	(SUM(work2.price)/COUNT(work2.price)) AS s25,
+	SUM(work3.price)/COUNT(work3.price) AS s50,
+	SUM(work4.price)/COUNT(work4.price) AS s75,
+	SUM(work5.price)/COUNT(work5.price)AS s100,
+	SUM(work6.price)/COUNT(work6.price)AS s125,
+	SUM(work7.price)/COUNT(work7.price)AS s150,
+	SUM(work8.price)/COUNT(work8.price)AS s175,
+	SUM(work9.price)/COUNT(work9.price)AS s200,
+        SUM(work10.price)/COUNT(work10.price)AS smax
+	FROM
+	ctf_development.routines
+	LEFT JOIN routinetoobjectgroups ON routinetoobjectgroups.routine_id=routines.id
+	LEFT JOIN objectintheprocessions AS car ON  car.objectgroup_id="+mod.id.to_s+"
+	LEFT JOIN completedworks AS work1 ON work1.routine_id=routines.id AND work1.objectintheprocession_id=car.id AND work1.mileage=0
+	LEFT JOIN completedworks AS work2 ON work2.routine_id=routines.id AND work2.objectintheprocession_id=car.id  AND work2.mileage>0 AND work2.mileage<=25000
+	LEFT JOIN completedworks AS work3 ON work3.routine_id=routines.id AND work3.objectintheprocession_id=car.id  AND work3.mileage>25000 AND work3.mileage<=50000
+	LEFT JOIN completedworks AS work4 ON work4.routine_id=routines.id AND work4.objectintheprocession_id=car.id  AND work4.mileage>50000 AND work4.mileage<=75000
+	LEFT JOIN completedworks AS work5 ON work5.routine_id=routines.id AND work5.objectintheprocession_id=car.id  AND work5.mileage>75000 AND work5.mileage<=100000
+	LEFT JOIN completedworks AS work6 ON work6.routine_id=routines.id AND work6.objectintheprocession_id=car.id AND work6.mileage>100000 AND work6.mileage<=125000
+	LEFT JOIN completedworks AS work7 ON work7.routine_id=routines.id AND work7.objectintheprocession_id=car.id  AND work7.mileage>125000 AND work7.mileage<=150000
+	LEFT JOIN completedworks AS work8 ON work8.routine_id=routines.id AND work8.objectintheprocession_id=car.id  AND work8.mileage>150000 AND work8.mileage<=175000
+	LEFT JOIN completedworks AS work9 ON work9.routine_id=routines.id AND work9.objectintheprocession_id=car.id AND work9.mileage>175000 AND work9.mileage<=200000
+        LEFT JOIN completedworks AS work10 ON work10.routine_id=routines.id AND work10.objectintheprocession_id=car.id AND work10.mileage>200000
+	WHERE routinetoobjectgroups.objectgroup_id="+mod.id.to_s+"  GROUP BY routines.id")%>
+                    <% @works.each do |work| %>
+	                    <tr>
+	                        <th><%= link_to work.title, works_path(:og_id =>mod.id ,:works=>work, :one => true,:mod_id=>mod.id) %></th>
+	                        <td><%=  work.s0.to_i unless work.s0.nil? %></td>
+	                        <td><%=  work.s25.to_i unless work.s25.nil? %></td>
+	                        <td><%=  work.s50.to_i unless work.s50.nil? %></td>
+	                        <td><%=  work.s75.to_i unless work.s75.nil? %></td>
+	                        <td><%=  work.s100.to_i unless work.s100.nil? %></td>
+	                        <td><%=  work.s125.to_i unless work.s125.nil? %></td>
+	                        <td><%=  work.s150.to_i unless work.s150.nil? %></td>
+	                        <td><%=  work.s175.to_i unless work.s175.nil? %></td>
+	                        <td><%=  work.s200.to_i unless work.s200.nil? %></td>
+                                <td><%=  work.smax %></td>
+	                    </tr>
+
+                    <% end %>
+	                    <tr>
+	                        <th><%= link_to "Показать все", "#" %></th>
+	                        <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+	                    </tr>
+                    <tr class="SubHeader">
+                        <th><b>Расходники</b></th>
+                        <td colspan="10"></td>
+                    </tr>
+                    <%#@works = Routine.find(:all,:joins => "left join routinetoobjectgroups on routines.id=routinetoobjectgroups.routine_id",:conditions => "routinetoobjectgroups.objectgroup_id="+mod.id.to_s)%>
+                    <%@parts = Routine.find_by_sql("SELECT 	parts.id,
+	parts.title,
+	(SUM(part1.price)/COUNT(part1.price)) AS s0,
+	(SUM(part2.price)/COUNT(part2.price)) AS s25,
+	SUM(part3.price)/COUNT(part3.price) AS s50,
+	SUM(part4.price)/COUNT(part4.price) AS s75,
+	SUM(part5.price)/COUNT(part5.price)AS s100,
+	SUM(part6.price)/COUNT(part6.price)AS s125,
+	SUM(part7.price)/COUNT(part7.price)AS s150,
+	SUM(part8.price)/COUNT(part8.price)AS s175,
+	SUM(part9.price)/COUNT(part9.price)AS s200,
+	SUM(part10.price)/COUNT(part10.price)AS smax
+	FROM
+	ctf_development.parts
+	LEFT JOIN objectintheprocessions AS car ON  car.objectgroup_id="+mod.id.to_s+"
+	LEFT JOIN completedworks AS work1 ON work1.objectintheprocession_id=car.id AND work1.mileage=0
+	LEFT JOIN parttoworks AS part1 ON part1.completedwork_id=work1.id AND part1.part_id=parts.id
+	LEFT JOIN completedworks AS work2 ON work2.objectintheprocession_id=car.id  AND work2.mileage>0 AND work2.mileage<=25000
+	LEFT JOIN parttoworks AS part2 ON part2.completedwork_id=work2.id AND part2.part_id=parts.id
+	LEFT JOIN completedworks AS work3 ON work3.objectintheprocession_id=car.id  AND work3.mileage>25000 AND work3.mileage<=50000
+	LEFT JOIN parttoworks AS part3 ON part3.completedwork_id=work3.id AND part3.part_id=parts.id
+	LEFT JOIN completedworks AS work4 ON work4.objectintheprocession_id=car.id  AND work4.mileage>50000 AND work4.mileage<=75000
+	LEFT JOIN parttoworks AS part4 ON part4.completedwork_id=work4.id AND part4.part_id=parts.id
+	LEFT JOIN completedworks AS work5 ON work5.objectintheprocession_id=car.id  AND work5.mileage>75000 AND work5.mileage<=100000
+	LEFT JOIN parttoworks AS part5 ON part5.completedwork_id=work5.id AND part5.part_id=parts.id
+	LEFT JOIN completedworks AS work6 ON work6.objectintheprocession_id=car.id AND work6.mileage>100000 AND work6.mileage<=125000
+	LEFT JOIN parttoworks AS part6 ON part6.completedwork_id=work6.id AND part6.part_id=parts.id
+	LEFT JOIN completedworks AS work7 ON work7.objectintheprocession_id=car.id  AND work7.mileage>125000 AND work7.mileage<=150000
+	LEFT JOIN parttoworks AS part7 ON part7.completedwork_id=work7.id AND part7.part_id=parts.id
+	LEFT JOIN completedworks AS work8 ON work8.objectintheprocession_id=car.id  AND work8.mileage>150000 AND work8.mileage<=175000
+	LEFT JOIN parttoworks AS part8 ON part8.completedwork_id=work8.id AND part8.part_id=parts.id
+	LEFT JOIN completedworks AS work9 ON work9.objectintheprocession_id=car.id AND work9.mileage>175000 AND work9.mileage<=200000
+	LEFT JOIN parttoworks AS part9 ON part9.completedwork_id=work9.id AND part9.part_id=parts.id
+	LEFT JOIN completedworks AS work10 ON work10.objectintheprocession_id=car.id AND work10.mileage>200000
+	LEFT JOIN parttoworks AS part10 ON part10.completedwork_id=work10.id AND part10.part_id=parts.id
+	WHERE (part1.price IS NOT NULL OR
+	part2.price IS NOT NULL OR
+	part3.price IS NOT NULL OR
+	part4.price IS NOT NULL OR
+	part5.price IS NOT NULL OR
+	part6.price IS NOT NULL OR
+	part7.price IS NOT NULL OR
+	part8.price IS NOT NULL OR
+	part9.price IS NOT NULL OR
+	part10.price IS NOT NULL) GROUP BY parts.id
+")%>
+                     <% @parts.each do |part| %>
+	                    <tr>
+                              <th><a href="#"><%= part.title %></a></th>
+	                        <td><%=  part.s0.to_i unless part.s0.nil? %></td>
+	                        <td><%=  part.s25.to_i unless part.s25.nil? %></td>
+	                        <td><%=  part.s50.to_i unless part.s50.nil? %></td>
+	                        <td><%=  part.s75.to_i unless part.s75.nil? %></td>
+	                        <td><%=  part.s100.to_i unless part.s100.nil? %></td>
+	                        <td><%=  part.s125.to_i unless part.s125.nil? %></td>
+	                        <td><%=  part.s150.to_i unless part.s150.nil? %></td>
+	                        <td><%=  part.s175.to_i unless part.s175.nil? %></td>
+	                        <td><%=  part.s200.to_i unless part.s200.nil? %></td>
+                                <td><%=  part.smax %></td>
+	                    </tr>
+
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+
+</ul>

@@ -1,0 +1,30 @@
+<h1>Listing parttoworks</h1>
+
+<table>
+  <tr>
+    <th>Parttoworkid</th>
+    <th>Partid</th>
+    <th>Part</th>
+    <th>Completedworkid</th>
+    <th>Completedwork</th>
+    <th>Price</th>
+  </tr>
+
+<% @parttoworks.each do |parttowork| %>
+  <tr>
+    <td><%=h parttowork.parttoworkid %></td>
+    <td><%=h parttowork.partid %></td>
+    <td><%=h parttowork.part %></td>
+    <td><%=h parttowork.completedworkid %></td>
+    <td><%=h parttowork.completedwork %></td>
+    <td><%=h parttowork.price %></td>
+    <td><%= link_to 'Show', parttowork %></td>
+    <td><%= link_to 'Edit', edit_parttowork_path(parttowork) %></td>
+    <td><%= link_to 'Destroy', parttowork, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New parttowork', new_parttowork_path %>

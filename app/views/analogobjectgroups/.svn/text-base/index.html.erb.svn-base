@@ -1,0 +1,32 @@
+<h1>Listing analogobjectgroups</h1>
+
+<table>
+  <tr>
+    <th>Analogobjectgroupid</th>
+    <th>Analogobjectgroup</th>
+    <th>Objectgroup</th>
+    <th>Objectgroupid</th>
+    <th>Nestedgroupid</th>
+    <th>Nestedgroup</th>
+    <th>Relationstype</th>
+  </tr>
+
+<% @analogobjectgroups.each do |analogobjectgroup| %>
+  <tr>
+    <td><%=h analogobjectgroup.analogobjectgroupid %></td>
+    <td><%=h analogobjectgroup.analogobjectgroup %></td>
+    <td><%=h analogobjectgroup.objectgroup %></td>
+    <td><%=h analogobjectgroup.objectgroupid %></td>
+    <td><%=h analogobjectgroup.nestedgroupid %></td>
+    <td><%=h analogobjectgroup.nestedgroup %></td>
+    <td><%=h analogobjectgroup.relationstype %></td>
+    <td><%= link_to 'Show', analogobjectgroup %></td>
+    <td><%= link_to 'Edit', edit_analogobjectgroup_path(analogobjectgroup) %></td>
+    <td><%= link_to 'Destroy', analogobjectgroup, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New analogobjectgroup', new_analogobjectgroup_path %>

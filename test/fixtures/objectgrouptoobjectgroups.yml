@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  parentgroup: 
+  parentgroupid: MyString
+  objectgroup: 
+  objectgroupid: MyString
+  sortorder: 1
+
+two:
+  parentgroup: 
+  parentgroupid: MyString
+  objectgroup: 
+  objectgroupid: MyString
+  sortorder: 1

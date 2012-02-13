@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  objectintheprocessionid: MyString
+  objectgroupid: MyString
+  objectgroup: 
+  objecttypeid: MyString
+  objecttype: 
+  title: MyString
+  sortorder: 1
+
+two:
+  objectintheprocessionid: MyString
+  objectgroupid: MyString
+  objectgroup: 
+  objecttypeid: MyString
+  objecttype: 
+  title: MyString
+  sortorder: 1
